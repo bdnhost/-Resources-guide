@@ -48,18 +48,56 @@ def inject_header_footer(file_path):
 
     original_content = content
 
-    # Remove existing header if present (between <body> and first main content)
-    # Pattern: <body>...any existing header/banner...until first <section or <main or other content
-    content = re.sub(
-        r'(<body[^>]*>\s*)(?:.*?<!-- Top Banner -->.*?</header>\s*)?',
-        r'\1' + header + '\n\n',
-        content,
-        count=1,
-        flags=re.DOTALL
+    # Step 1: Remove ALL old header-related elements after <body>
+    # This includes: Top Banner, LMS Notice Banner, global-nav, old headers, etc.
+
+    # Find the <body> tag
+    body_match = re.search(r'<body[^>]*>', content)
+    if not body_match:
+        print(f"⚠️  No <body> tag found in {file_path}")
+        return False
+
+    body_end = body_match.end()
+
+    # Strategy: Find the REAL content start by looking for:
+    # 1. Page-specific hero header (has <h1> inside <header>)
+    # 2. OR main content container (<div class="container">)
+    # We want to keep the page-specific header but remove everything before it
+
+    # First, try to find a header with h1 (page-specific hero header)
+    hero_header_match = re.search(
+        r'<header[^>]*>\s*<div[^>]*>\s*<h1',
+        content[body_end:],
+        re.DOTALL
     )
 
-    # Remove existing footer if present (before </body>)
-    # Pattern: <footer>...</footer> before </body>
+    # If no hero header, look for main container
+    if not hero_header_match:
+        container_match = re.search(
+            r'<div\s+class="container"',
+            content[body_end:],
+            re.IGNORECASE
+        )
+        if container_match:
+            content_start = body_end + container_match.start()
+        else:
+            # Fallback: just insert after body
+            content_start = body_end
+    else:
+        content_start = body_end + hero_header_match.start()
+
+    # Replace everything between <body> and content start with our header
+    if content_start > body_end:
+        content = (
+            content[:body_end] +
+            '\n' + header + '\n\n' +
+            content[content_start:]
+        )
+    else:
+        # Fallback: just insert after <body>
+        content = content[:body_end] + '\n' + header + '\n\n' + content[body_end:]
+
+    # Step 2: Remove existing footer if present (before </body>)
     content = re.sub(
         r'\s*<footer>.*?</footer>\s*(?=\s*<script|</body>)',
         '\n' + footer + '\n\n',
