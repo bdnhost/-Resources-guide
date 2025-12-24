@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בחן את עצמך - מדריך Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .student-id-section {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 2px solid #e2e8f0;
+        }
+
+        .student-id-section label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .student-id-section input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .student-id-section input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .student-id-section small {
+            display: block;
+            margin-top: 0.5rem;
+            color: #64748b;
+        }
+
+        .question {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 2px solid #e2e8f0;
+        }
+
+        .question-header {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .question-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .question-text {
+            flex: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            padding-top: 0.5rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f1f5f9;
+        }
+
+        .option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            font-size: 1rem;
+        }
+
+        .option.correct {
+            border-color: #10b981;
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: #ef4444;
+            background: #fee2e2;
+        }
+
+        .option.correct::after {
+            content: '✓';
+            color: #10b981;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .option.incorrect::after {
+            content: '✗';
+            color: #ef4444;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 2rem;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .result {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+            border: 3px solid #667eea;
+        }
+
+        .result-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .result h2 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .score {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #667eea;
+            margin: 1rem 0;
+        }
+
+        .result-message {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .portal-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-left: 1rem;
+        }
+
+        .portal-link:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .retry-btn, .back-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #64748b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 1rem;
+            text-decoration: none;
+        }
+
+        .retry-btn:hover, .back-btn:hover {
+            background: #475569;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .question-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="header">
+            <h1>🐍 בחן את עצמך - Python</h1>
+            <p id="quiz-title">מדריך Python - יסודות</p>
+        </div>
+
+        <div class="content">
+            <!-- Student ID Section -->
+            <div class="student-id-section">
+                <label for="student-id">מזהה תלמיד <span style="color: #ef4444;">*</span></label>
+                <input
+                    type="text"
+                    id="student-id"
+                    placeholder="הכנס מזהה תלמיד קיים במערכת"
+                    required
+                >
+                <small>נדרש מזהה תלמיד כדי לשמור את התוצאות במערכת EduManage</small>
+            </div>
+
+            <!-- Quiz Form -->
+            <form id="quiz-form">
+                <!-- Questions will be injected here -->
+                <div id="questions-container"></div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    ✅ בדוק תשובות
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // הגדרת השאלות
+        // ========================================
+        const QUIZ_CONFIG = {
+            guideName: 'מדריך Python',
+            guideChapter: 'יסודות',
+            guideSection: 'מבחן כולל',
+            questions: [
+                {
+                    question: 'מהי Python?',
+                    options: [
+                        'שפת תכנות ברמה גבוהה, קלה ללמידה וקריאה',
+                        'מסד נתונים',
+                        'מערכת הפעלה',
+                        'כלי לעריכת טקסט'
+                    ],
+                    correct: 0
+                },
+                {
+                    question: 'איזה טיפוס נתונים משמש למספרים שלמים ב-Python?',
+                    options: [
+                        'str',
+                        'int',
+                        'float',
+                        'bool'
+                    ],
+                    correct: 1
+                },
+                {
+                    question: 'מה התוצאה של הקוד: x = [1, 2, 3]; print(x[0])?',
+                    options: [
+                        '[1, 2, 3]',
+                        '1',
+                        '0',
+                        'שגיאה'
+                    ],
+                    correct: 1
+                },
+                {
+                    question: 'איך יוצרים dictionary (מילון) ב-Python?',
+                    options: [
+                        'my_dict = (key: value)',
+                        'my_dict = [key: value]',
+                        'my_dict = {key: value}',
+                        'my_dict = <key: value>'
+                    ],
+                    correct: 2
+                },
+                {
+                    question: 'מה עושה הפקודה if x > 10: print("גדול")?',
+                    options: [
+                        'מדפיסה "גדול" תמיד',
+                        'מדפיסה "גדול" רק אם x גדול מ-10',
+                        'מדפיסה את הערך של x',
+                        'גורמת לשגיאה'
+                    ],
+                    correct: 1
+                },
+                {
+                    question: 'מהו ההבדל בין for ו-while ב-Python?',
+                    options: [
+                        'אין הבדל, שניהם זהים',
+                        'for משמש לאיטרציה על רצפים, while משמש לתנאי',
+                        'for מהיר יותר מ-while',
+                        'while לא קיים ב-Python'
+                    ],
+                    correct: 1
+                },
+                {
+                    question: 'איך מגדירים פונקציה ב-Python?',
+                    options: [
+                        'function myFunc():',
+                        'def myFunc():',
+                        'func myFunc():',
+                        'define myFunc():'
+                    ],
+                    correct: 1
+                },
+                {
+                    question: 'מה עושה הפקודה import math?',
+                    options: [
+                        'יוצרת משתנה בשם math',
+                        'מוחקת את המודול math',
+                        'מייבאת את המודול math לשימוש',
+                        'בודקת אם math קיים'
+                    ],
+                    correct: 2
+                },
+                {
+                    question: 'מה התוצאה של "Hello" + " " + "World"?',
+                    options: [
+                        'HelloWorld',
+                        'Hello World',
+                        'שגיאה',
+                        'Hello + World'
+                    ],
+                    correct: 1
+                },
+                {
+                    question: 'איזו מהפרקטיקות הבאות נחשבת לטובה ב-Python?',
+                    options: [
+                        'שימוש בשמות משתנים כמו x, y, z תמיד',
+                        'כתיבת כל הקוד בשורה אחת',
+                        'שימוש בשמות משתנים תיאוריים ורווחים (Indentation) עקבי',
+                        'אי-שימוש בהערות בקוד'
+                    ],
+                    correct: 2
+                }
+            ]
+        };
+
+        const API_URL = 'https://edu-manage.org/api/functions/submitGuideForm';
+
+        // ========================================
+        // הצגת השאלות
+        // ========================================
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            document.getElementById('quiz-title').textContent =
+                `${QUIZ_CONFIG.guideName} - ${QUIZ_CONFIG.guideChapter}`;
+
+            QUIZ_CONFIG.questions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${index + 1}</div>
+                        <div class="question-text">${q.question}</div>
+                    </div>
+                    <div class="options">
+                        ${q.options.map((option, optIndex) => `
+                            <label class="option">
+                                <input type="radio" name="q${index}" value="${optIndex}" required>
+                                <label>${option}</label>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(questionDiv);
+            });
+        }
+
+        // ========================================
+        // חישוב ציון
+        // ========================================
+        function calculateScore() {
+            let correct = 0;
+            let answers = [];
+
+            QUIZ_CONFIG.questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected) {
+                    const answer = parseInt(selected.value);
+                    answers.push(answer);
+                    if (answer === q.correct) {
+                        correct++;
+                    }
+                }
+            });
+
+            return {
+                correct,
+                total: QUIZ_CONFIG.questions.length,
+                percentage: Math.round((correct / QUIZ_CONFIG.questions.length) * 100),
+                answers
+            };
+        }
+
+        // ========================================
+        // הצגת תוצאות
+        // ========================================
+        function showResults(score, answers) {
+            // סמן תשובות נכונות ושגויות
+            QUIZ_CONFIG.questions.forEach((q, index) => {
+                const options = document.querySelectorAll(`input[name="q${index}"]`);
+                options.forEach((option, optIndex) => {
+                    const label = option.closest('.option');
+                    label.style.pointerEvents = 'none';
+
+                    if (optIndex === q.correct) {
+                        label.classList.add('correct');
+                    } else if (parseInt(option.value) === answers[index] && answers[index] !== q.correct) {
+                        label.classList.add('incorrect');
+                    }
+                });
+            });
+
+            // קבע אייקון ומסר לפי ציון
+            let icon, message;
+            if (score.percentage >= 90) {
+                icon = '🏆';
+                message = 'מעולה! אתה שולט ב-Python!';
+            } else if (score.percentage >= 70) {
+                icon = '🎉';
+                message = 'כל הכבוד! תוצאה טובה!';
+            } else if (score.percentage >= 50) {
+                icon = '👍';
+                message = 'לא רע! כדאי לחזור על החומר.';
+            } else {
+                icon = '📚';
+                message = 'מומלץ לחזור על המדריך ולנסות שוב.';
+            }
+
+            return { icon, message };
+        }
+
+        // ========================================
+        // שליחה לשרת
+        // ========================================
+        async function submitToEduManage(studentId, score, answers) {
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        student_id: studentId,
+                        guide_name: QUIZ_CONFIG.guideName,
+                        guide_chapter: QUIZ_CONFIG.guideChapter,
+                        guide_section: QUIZ_CONFIG.guideSection,
+                        guide_task: 'מבחן בחן את עצמך',
+                        page_url: window.location.href,
+                        form_data: {
+                            quiz_score: score.percentage,
+                            correct_answers: score.correct,
+                            total_questions: score.total,
+                            answers: answers,
+                            timestamp: new Date().toISOString()
+                        }
+                    })
+                });
+
+                return await response.json();
+            } catch (error) {
+                console.error('Error submitting to EduManage:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // ========================================
+        // טיפול בשליחת הטופס
+        // ========================================
+        document.getElementById('quiz-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const studentId = document.getElementById('student-id').value.trim();
+            if (!studentId) {
+                alert('❌ נא להזין מזהה תלמיד');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ בודק תשובות...';
+
+            // חשב ציון
+            const score = calculateScore();
+            const result = showResults(score, score.answers);
+
+            // שלח לשרת
+            submitBtn.textContent = '⏳ שומר תוצאות...';
+            const apiResult = await submitToEduManage(studentId, score, score.answers);
+
+            // הצג תוצאה
+            const portalUrl = apiResult.success ?
+                `https://edu-manage.org/PublicView?type=student&id=${encodeURIComponent(studentId)}` :
+                '#';
+
+            document.getElementById('container').innerHTML = `
+                <div class="header">
+                    <h1>🐍 תוצאות המבחן</h1>
+                    <p>${QUIZ_CONFIG.guideName} - ${QUIZ_CONFIG.guideChapter}</p>
+                </div>
+                <div class="content">
+                    <div class="result">
+                        <div class="result-icon">${result.icon}</div>
+                        <h2>${result.message}</h2>
+                        <div class="score">${score.percentage}%</div>
+                        <p class="result-message">
+                            ענית נכון על <strong>${score.correct}</strong> מתוך <strong>${score.total}</strong> שאלות
+                        </p>
+                        ${apiResult.success ? `
+                            <a href="${portalUrl}" class="portal-link" target="_blank">
+                                👤 צפה בפורטל התלמיד
+                            </a>
+                            <p style="margin-top: 1rem; color: #10b981; font-size: 0.9rem;">
+                                ✅ התוצאות נשמרו בהצלחה במערכת!
+                            </p>
+                        ` : `
+                            <p style="margin-top: 1rem; color: #f59e0b; font-size: 0.9rem;">
+                                ⚠️ התוצאות לא נשמרו: ${apiResult.error || 'שגיאת חיבור'}
+                            </p>
+                        `}
+                        <div style="margin-top: 1.5rem;">
+                            <button class="retry-btn" onclick="location.reload()">🔄 נסה שוב</button>
+                            <a href="python_guide.html" class="back-btn">📖 חזור למדריך</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // טען שאלות בטעינת הדף
+        renderQuestions();
+    </script>
+</body>
+</html>
