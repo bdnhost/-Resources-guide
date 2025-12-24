@@ -266,10 +266,167 @@
                 font-size: 2rem;
             }
         }
+    
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .top-banner a {
+            color: white;
+            text-decoration: underline;
+            margin: 0 0.5rem;
+        }
+
+        .top-banner a:hover {
+            text-decoration: none;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        header nav a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover,
+        header nav a[aria-current="page"] {
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
+                <a href="#main-content" class="sr-only">דלג לתוכן הראשי</a>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        🎓 <strong>תלמיד רשום?</strong>
+        <a href="https://edu-manage.org/">חזור לפורטל לאחר הלימוד</a>
+        |
+        🚀 <strong>גולש חדש?</strong>
+        <a href="https://edu-manage.org/JoinCourse?org=69391901350762829f9a50b1">הצטרף חינם</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo" aria-label="חזרה לעמוד הבית">
+                    <span>🎓</span>
+                    <span>LearningHub</span>
+                </a>
+                <nav aria-label="ניווט ראשי">
+                    <ul>
+                        <li><a href="index.html">ראשי</a></li>
+                        <li><a href="categories.html">קטגוריות</a></li>
+                        <li><a href="sitemap.html">מפת אתר</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+<!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>🎓 LearningHub</h1>
@@ -446,7 +603,54 @@
             </div>
         </div>
     </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🎓 LearningHub</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7);">פורטל הלמידה והחדשנות המוביל בישראל. כלים דיגיטליים, בינה מלאכותית ואוטומציה לכל מקצוע ותחום.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>למידה</h4>
+                    <ul>
+                        <li><a href="categories.html">כל הקטגוריות</a></li>
+                        <li><a href="guides/ai-automation/python_guide.html">Python</a></li>
+                        <li><a href="guides/ai-automation/chatgpt_guide.html">ChatGPT</a></li>
+                        <li><a href="guides/data-business/data_analysis_guide.html">ניתוח נתונים</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>משאבים</h4>
+                    <ul>
+                        <li><a href="sitemap.html">מפת האתר</a></li>
+                        <li><a href="guides/ai-automation/prompts.html">ספריית פרומפטים</a></li>
+                        <li><a href="guides/ai-automation/ai_ethics.html">אתיקה ב-AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>EduManage LMS</h4>
+                    <ul>
+                        <li><a href="https://edu-manage.org/">כניסה לפורטל</a></li>
+                        <li><a href="https://edu-manage.org/JoinCourse?org=69391901350762829f9a50b1">הצטרפות לקורס</a></li>
+                        <li><a href="#support">תמיכה טכנית</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#linkedin" aria-label="LinkedIn" title="LinkedIn">💼</a>
+                    <a href="#github" aria-label="GitHub" title="GitHub">🐙</a>
+                    <a href="#youtube" aria-label="YouTube" title="YouTube">📺</a>
+                </div>
+                <p style="margin-top: 1rem;">© 2025 פורטל הלמידה והחדשנות | נבנה ע"י יעקב בידני</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                    <a href="https://edu-manage.org/" style="color: rgba(255, 255, 255, 0.5);">EduManage</a> • מערכת לניהול פדגוגי ולמידה
+                </p>
+            </div>
+        </div>
+    </footer>
 
-    <script src="public/global.js"></script>
+
+<script src="public/global.js"></script>
 </body>
 </html>
