@@ -430,6 +430,11 @@
             font-style: italic;
         }
 
+        .guide-item.hidden {
+            display: none;
+        }
+
+
         .category-footer {
             padding: 1rem 1.5rem;
             background: var(--bg-secondary);
@@ -1068,5 +1073,42 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // פונקציונליות אקורדיון לכפתור "צפה בכל המדריכים"
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewAllButtons = document.querySelectorAll('.view-all-btn');
+            
+            viewAllButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const card = this.closest('.category-card');
+                    const guidesList = card.querySelector('.guides-list');
+                    const showMore = card.querySelector('.show-more');
+                    const hiddenItems = card.querySelectorAll('.guide-item.hidden');
+                    
+                    if (hiddenItems.length > 0) {
+                        // הצג את כל המדריכים
+                        hiddenItems.forEach(item => {
+                            item.classList.remove('hidden');
+                        });
+                        if (showMore) showMore.style.display = 'none';
+                        this.innerHTML = 'הסתר מדריכים <span>↑</span>';
+                    } else {
+                        // הסתר מדריכים
+                        const items = card.querySelectorAll('.guide-item');
+                        items.forEach((item, index) => {
+                            if (index >= 3) {  // הצג רק 3 ראשונים
+                                item.classList.add('hidden');
+                            }
+                        });
+                        if (showMore) showMore.style.display = 'list-item';
+                        this.innerHTML = 'צפה בכל המדריכים <span>←</span>';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
