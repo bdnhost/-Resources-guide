@@ -208,7 +208,38 @@
 </head>
 <body>
     
-    <div class="lms-banner">
+                <a href="#main-content" class="sr-only">דלג לתוכן הראשי</a>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        🎓 <strong>תלמיד רשום?</strong>
+        <a href="https://edu-manage.org/">חזור לפורטל לאחר הלימוד</a>
+        |
+        🚀 <strong>גולש חדש?</strong>
+        <a href="https://edu-manage.org/JoinCourse?org=69391901350762829f9a50b1">הצטרף חינם</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../../index.html" class="logo" aria-label="חזרה לעמוד הבית">
+                    <span>🎓</span>
+                    <span>LearningHub</span>
+                </a>
+                <nav aria-label="ניווט ראשי">
+                    <ul>
+                        <li><a href="../../index.html">ראשי</a></li>
+                        <li><a href="../../categories.html">קטגוריות</a></li>
+                        <li><a href="../../sitemap.html">מפת אתר</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+<div class="lms-banner">
         <div class="lms-banner-content">
             <span class="lms-text">🎓 <strong>רוצה להעמיק?</strong> בקר באתר המרכזי</span>
             <a href="https://edu-manage.org/" class="lms-btn">LearningHub</a>
@@ -308,166 +339,56 @@
             <!-- Part 1: Case Study -->
             <div class="section" id="sec-1">
                 <h2 style="color:var(--theme-primary)">מקרה בוחן: המהפכה הסמנטית של WebFlow Solutions</h2>
-                <div class="case-box">חברת הסטארטאפ 'WebFlow Solutions' השיקה אתר שיווקי חדש. בתחילה, המפתחים השתמשו אך ורק בתגיות <div> לכל חלקי האתר. התוצאה הייתה דף שנראה מצוין ויזואלית, אך נכשל לחלוטין במבחני נגישות (Accessibility) ודורג נמוך מאוד במנועי החיפוש (SEO). לאחר ניתוח מעמיק, הצוות החליט לשכתב את הקוד ל-SEMANTIC HTML. הם החליפו את ה-<div> החיצוניים ב-<header>, <nav>, <main>, ו-<footer>. התוצאה: עלייה של 45% בתנועת הגולשים האורגנית ושיפור דרמטי ביכולת של קוראי מסך לנווט באתר.</div>
-                <div class="quiz-box">
-    <div class="question" data-question="q0">
-        <div class="question-header">
-            <div class="question-badge">שאלה 1</div>
-            <div class="question-text">מהו התפקיד העיקרי של HTML בתהליך בניית אתר?</div>
-        </div>
-        <div class="options">
-            
-            <div class="option" onclick="selectOption(this, 'q0', false)">
-                <div class="radio-circle"></div>
-                <input type="radio" name="q0" id="q0_o0" style="display:none">
-                <label for="q0_o0">לעיצוב צבע הגופנים בדף</label>
-            </div>
-            
-            <div class="option" onclick="selectOption(this, 'q0', true)">
-                <div class="radio-circle"></div>
-                <input type="radio" name="q0" id="q0_o1" style="display:none">
-                <label for="q0_o1">להגדרת המבנה והמשמעות של התוכן</label>
-            </div>
-            
-            <div class="option" onclick="selectOption(this, 'q0', false)">
-                <div class="radio-circle"></div>
-                <input type="radio" name="q0" id="q0_o2" style="display:none">
-                <label for="q0_o2">ליצירת אינטראקציות מורכבות עם המשתמש</label>
-            </div>
-            
-        </div>
-        <div class="feedback" id="feedback-q0"></div>
-    </div>
-  
-    <div class="question" data-question="q1">
-        <div class="question-header">
-            <div class="question-badge">שאלה 2</div>
-            <div class="question-text">מה המשמעות של התגית הסמנטית <main>?</div>
-        </div>
-        <div class="options">
-            
-            <div class="option" onclick="selectOption(this, 'q1', true)">
-                <div class="radio-circle"></div>
-                <input type="radio" name="q1" id="q1_o0" style="display:none">
-                <label for="q1_o0">תגית המציינת את החלק העיקרי והייחודי של המסמך</label>
-            </div>
-            
-            <div class="option" onclick="selectOption(this, 'q1', false)">
-                <div class="radio-circle"></div>
-                <input type="radio" name="q1" id="q1_o1" style="display:none">
-                <label for="q1_o1">תגית המשמשת ליצירת תפריטי ניווט בלבד</label>
-            </div>
-            
-            <div class="option" onclick="selectOption(this, 'q1', false)">
-                <div class="radio-circle"></div>
-                <input type="radio" name="q1" id="q1_o2" style="display:none">
-                <label for="q1_o2">תגית לעיצוב כותרות משניות</label>
-            </div>
-            
-        </div>
-        <div class="feedback" id="feedback-q1"></div>
-    </div>
-  </div>
-                <div style="margin-top:40px; display:flex; justify-content:space-between;">
-                    <button class="btn-secondary" onclick="navTo(0)">חזור</button>
-                    <button class="btn-primary" onclick="navTo(2)">המשך</button>
-                </div>
-            </div>
-
-            <!-- Part 2: Analysis -->
-            <div class="section" id="sec-2">
-                <h2 style="color:var(--theme-primary)">ניתוח היררכיית מסמך והפרדת רשויות</h2>
-                <div class="bar-chart">
-    <div class="bar">
-        <div class="bar-fill" style="height: 920%;">
-            <span class="bar-value">92</span>
-        </div>
-        <div class="bar-label">דירוג SEO (Semantic)</div>
-    </div>
-  
-    <div class="bar">
-        <div class="bar-fill" style="height: 380%;">
-            <span class="bar-value">38</span>
-        </div>
-        <div class="bar-label">דירוג SEO (Non-Semantic)</div>
-    </div>
-  
-    <div class="bar">
-        <div class="bar-fill" style="height: 850%;">
-            <span class="bar-value">85</span>
-        </div>
-        <div class="bar-label">מדד נגישות</div>
-    </div>
-  
-    <div class="bar">
-        <div class="bar-fill" style="height: 12%;">
-            <span class="bar-value">1.2</span>
-        </div>
-        <div class="bar-label">זמן טעינה (שניות)</div>
-    </div>
-  </div>
-                <p>במשימה זו, עליך לנתח את המבנה של דף אינטרנט קיים ולהסביר את הבחירות הארכיטקטוניות שנעשו בו.</p>
-                <textarea style="width:100%; height:100px; padding:15px; border-radius:12px; border:1px solid #ddd;" placeholder="כתבו כאן..."></textarea>
-                <div style="margin-top:40px; display:flex; justify-content:space-between;">
-                    <button class="btn-secondary" onclick="navTo(1)">חזור</button>
-                    <button class="btn-primary" onclick="navTo(3)">סיום הפרק</button>
-                </div>
-            </div>
-
-            <!-- Part 3: Summary -->
-            <div class="section" id="sec-3">
-                <div style="text-align:center;">
-                    <span style="font-size:4rem;">🏆</span>
-                    <h2>כל הכבוד!</h2>
-                    <p>סיימתם את פרק 1 בהצלחה.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-    
-    <footer class="global-footer">
-        <div class="footer-container">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <h3><span class="brand-icon">🎓</span> LearningHub</h3>
-                    <p class="footer-description">
-                        פורטל הלמידה והחדשנות המוביל בישראל. מדריכים, כלים דיגיטליים ובינה מלאכותית.
-                    </p>
-                    <div style="margin-top: 1rem;">
-                        <a href="https://edu-manage.org/JoinCourse?org=69391901350762829f9a50b1" 
-                           class="btn-pill">
-                            🚀 התחל ללמוד חינם
-                        </a>
-                    </div>
-                </div>
-                
+                <div class="case-box">חברת הסטארטאפ 'WebFlow Solutions' השיקה אתר שיווקי חדש. בתחילה, המפתחים השתמשו אך ורק בתגיות <div> לכל חלקי האתר. התוצאה הייתה דף שנראה מצוין ויזואלית, אך נכשל לחלוטין במבחני נגישות (Accessibility) ודורג נמוך מאוד במנועי החיפוש (SEO). לאחר ניתוח מעמיק, הצוות החליט לשכתב את הקוד ל-SEMANTIC HTML. הם החליפו את ה-<div> החיצוניים ב-<header>, <nav>, <main>, ו-
+    <footer>
+        <div class="container">
+            <div class="footer-content">
                 <div class="footer-section">
-                    <h4>ניווט</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html" class="footer-link">דף המדריך</a></li>
-                        <li><a href="https://edu-manage.org/" class="footer-link">החשבון שלי</a></li>
+                    <h4>🎓 LearningHub</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7);">פורטל הלמידה והחדשנות המוביל בישראל. כלים דיגיטליים, בינה מלאכותית ואוטומציה לכל מקצוע ותחום.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>למידה</h4>
+                    <ul>
+                        <li><a href="../../categories.html">כל הקטגוריות</a></li>
+                        <li><a href="../../guides/ai-automation/python_guide.html">Python</a></li>
+                        <li><a href="../../guides/ai-automation/chatgpt_guide.html">ChatGPT</a></li>
+                        <li><a href="../../guides/data-business/data_analysis_guide.html">ניתוח נתונים</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
-                    <h4>EduManage</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://edu-manage.org/" class="footer-link">אודות</a></li>
-                        <li><a href="#" class="footer-link">צור קשר</a></li>
+                    <h4>משאבים</h4>
+                    <ul>
+                        <li><a href="../../sitemap.html">מפת האתר</a></li>
+                        <li><a href="../../guides/ai-automation/prompts.html">ספריית פרומפטים</a></li>
+                        <li><a href="../../guides/ai-automation/ai_ethics.html">אתיקה ב-AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>EduManage LMS</h4>
+                    <ul>
+                        <li><a href="https://edu-manage.org/">כניסה לפורטל</a></li>
+                        <li><a href="https://edu-manage.org/JoinCourse?org=69391901350762829f9a50b1">הצטרפות לקורס</a></li>
+                        <li><a href="#support">תמיכה טכנית</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <div class="footer-copyright">
-                    <div>© 2025 <a href="https://edu-manage.org/" style="color: inherit; text-decoration: none;">EduManage</a> • כל הזכויות שמורות</div>
+                <div class="social-links">
+                    <a href="#linkedin" aria-label="LinkedIn" title="LinkedIn">💼</a>
+                    <a href="#github" aria-label="GitHub" title="GitHub">🐙</a>
+                    <a href="#youtube" aria-label="YouTube" title="YouTube">📺</a>
                 </div>
+                <p style="margin-top: 1rem;">© 2025 פורטל הלמידה והחדשנות | נבנה ע"י יעקב בידני</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                    <a href="https://edu-manage.org/" style="color: rgba(255, 255, 255, 0.5);">EduManage</a> • מערכת לניהול פדגוגי ולמידה
+                </p>
             </div>
         </div>
     </footer>
 
 
-    <script>
+<script>
         const audioData = {
             0: "narration_ch1_welcome.mp3",
             1: "narration_ch1_case.mp3",
