@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>LearningHub - פורטל הלמידה והחדשנות | 38+ מדריכים מקצועיים בעברית</title>
+    <meta name="description" content="מאגר חינמי של 38+ מדריכים וקורסים מקצועיים בעברית בנושאי AI, פיתוח תוכנה, ניתוח נתונים, עיצוב ועוד. למידה נגישה לכולם!">
+    <meta name="keywords" content="מדריכים בעברית, קורסים חינמיים, AI, פייתון, ניתוח נתונים, פיתוח תוכנה, עיצוב גרפי, קריירה טכנולוגית">
+    <meta name="author" content="יעקב בידני">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bdnhost.net/Resources/">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LearningHub - פורטל הלמידה והחדשנות">
+    <meta property="og:description" content="38+ מדריכים וקורסים מקצועיים בעברית - AI, פיתוח, נתונים, עיצוב וקריירה">
+    <meta property="og:url" content="https://bdnhost.net/Resources/">
+    <meta property="og:site_name" content="LearningHub">
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:image" content="https://bdnhost.net/edumanage/edumanageLOGO.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LearningHub - פורטל הלמידה והחדשנות">
+    <meta name="twitter:description" content="38+ מדריכים וקורסים מקצועיים בעברית">
+    <meta name="twitter:image" content="https://bdnhost.net/edumanage/edumanageLOGO.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "LearningHub - פורטל הלמידה והחדשנות",
+        "description": "מאגר חינמי של מדריכים וקורסים מקצועיים בעברית",
+        "url": "https://bdnhost.net/Resources/",
+        "logo": "https://bdnhost.net/edumanage/edumanageLOGO.png",
+        "sameAs": [
+            "https://twitter.com/LearningHubIL"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IL"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="public/global.css">
+    <style>
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Categories Section */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .category-desc {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .category-count {
+            background: #f1f5f9;
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        /* Features Section */
+        .features {
+            background: #f8fafc;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .feature-desc {
+            color: #64748b;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            margin: 4rem 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1e293b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>🎓 LearningHub</h1>
+            <p>פורטל הלמידה והחדשנות - למידה נגישה לכולם, בעברית</p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">38+</span>
+                    <span class="stat-label">מדריכים מקצועיים</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">קורסים מובנים</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">קטגוריות</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">חינם</span>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="categories.html" class="btn btn-primary">גלה את המדריכים</a>
+                <a href="courses/" class="btn btn-secondary">קורסים מובנים</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="container">
+        <h2>קטגוריות התוכן</h2>
+        <div class="categories-grid">
+            <a href="categories.html#ai-automation" class="category-card">
+                <div class="category-icon">🤖</div>
+                <h3 class="category-title">AI & Automation</h3>
+                <p class="category-desc">בינה מלאכותית, אוטומציה וכלי AI מתקדמים</p>
+                <span class="category-count">16 מדריכים</span>
+            </a>
+
+            <a href="categories.html#career" class="category-card">
+                <div class="category-icon">💼</div>
+                <h3 class="category-title">Career</h3>
+                <p class="category-desc">פיתוח קריירה ומיומנויות מקצועיות</p>
+                <span class="category-count">3 מדריכים</span>
+            </a>
+
+            <a href="categories.html#creative-studio" class="category-card">
+                <div class="category-icon">🎨</div>
+                <h3 class="category-title">Creative Studio</h3>
+                <p class="category-desc">עיצוב, יצירה ופיתוח יצירתי</p>
+                <span class="category-count">7 מדריכים</span>
+            </a>
+
+            <a href="categories.html#data-business" class="category-card">
+                <div class="category-icon">📊</div>
+                <h3 class="category-title">Data & Business</h3>
+                <p class="category-desc">ניתוח נתונים ועסקים דיגיטליים</p>
+                <span class="category-count">6 מדריכים</span>
+            </a>
+
+            <a href="categories.html#digital-basics" class="category-card">
+                <div class="category-icon">💻</div>
+                <h3 class="category-title">Digital Basics</h3>
+                <p class="category-desc">יסודות דיגיטליים וטכנולוגיה בסיסית</p>
+                <span class="category-count">8 מדריכים</span>
+            </a>
+
+            <a href="categories.html#technology" class="category-card">
+                <div class="category-icon">⚙️</div>
+                <h3 class="category-title">Technology</h3>
+                <p class="category-desc">טכנולוגיות מתקדמות ו-IoT</p>
+                <span class="category-count">3 מדריכים</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>למה LearningHub?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">📖</div>
+                    <h3 class="feature-title">תוכן איכותי</h3>
+                    <p class="feature-desc">מדריכים מקצועיים ומעמיקים בכל נושא</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">למידה ממוקדת</h3>
+                    <p class="feature-desc">קורסים מובנים עם מטרות ברורות</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎤</div>
+                    <h3 class="feature-title">הקראות אודיו</h3>
+                    <p class="feature-desc">למידה נגישה עם 15 קבצי אודיו</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Responsive</h3>
+                    <p class="feature-desc">מותאם לכל המכשירים</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🆓</div>
+                    <h3 class="feature-title">חינמי לחלוטין</h3>
+                    <p class="feature-desc">כל התכנים זמינים בחינם</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🇮🇱</div>
+                    <h3 class="feature-title">בעברית</h3>
+                    <p class="feature-desc">כל התוכן בעברית ברורה</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Guides -->
+    <section class="container">
+        <h2>מדריכים פופולריים</h2>
+        <div class="categories-grid">
+            <a href="guides/ai-automation/chatgpt_guide.html" class="category-card">
+                <div class="category-icon">💬</div>
+                <h3 class="category-title">מדריך ChatGPT</h3>
+                <p class="category-desc">שימוש מתקדם ב-ChatGPT לפרודוקטיביות</p>
+            </a>
+
+            <a href="guides/ai-automation/python_guide.html" class="category-card">
+                <div class="category-icon">🐍</div>
+                <h3 class="category-title">מדריך Python</h3>
+                <p class="category-desc">למד Python מאפס ועד מתקדם</p>
+            </a>
+
+            <a href="guides/data-business/data_analysis_guide.html" class="category-card">
+                <div class="category-icon">📈</div>
+                <h3 class="category-title">ניתוח נתונים</h3>
+                <p class="category-desc">כלים וטכניקות לניתוח נתונים</p>
+            </a>
+
+            <a href="guides/creative-studio/canva_guide.html" class="category-card">
+                <div class="category-icon">🎨</div>
+                <h3 class="category-title">מדריך Canva</h3>
+                <p class="category-desc">עיצוב גרפי מקצועי בקלות</p>
+            </a>
+
+            <a href="guides/digital-basics/github_guide.html" class="category-card">
+                <div class="category-icon">🐙</div>
+                <h3 class="category-title">Git & GitHub</h3>
+                <p class="category-desc">בקרת גרסאות ושיתוף פעולה</p>
+            </a>
+
+            <a href="guides/ai-automation/prompt-engineering-guide.html" class="category-card">
+                <div class="category-icon">✍️</div>
+                <h3 class="category-title">Prompt Engineering</h3>
+                <p class="category-desc">אומנות כתיבת פרומפטים</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="hero" style="margin-top: 4rem;">
+        <div class="container">
+            <h2>מוכן להתחיל ללמוד?</h2>
+            <p>הצטרף לאלפי לומדים ופתח את הדלת לעולם הטכנולוגיה</p>
+            <div class="cta-buttons">
+                <a href="categories.html" class="btn btn-primary">התחל עכשיו</a>
+                <a href="sitemap.html" class="btn btn-secondary">מפת אתר מלאה</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="public/global.js"></script>
+</body>
+</html>
