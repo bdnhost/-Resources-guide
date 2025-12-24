@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python להנדסאים | מדריך מלא להיכרות והפעלת קוד</title>אלקובי
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header-subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+        
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            font-size: 0.95em;
+        }
+        
+        .meta-item {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 3px solid #667eea;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 12px 25px;
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .content {
+            padding: 50px;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-right: 5px solid #667eea;
+        }
+        
+        .toc h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .toc ol {
+            margin-right: 20px;
+        }
+        
+        .toc li {
+            margin: 12px 0;
+            font-size: 1.1em;
+        }
+        
+        .toc a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: #667eea;
+        }
+        
+        .section {
+            margin: 50px 0;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.6em;
+            margin: 30px 0 15px 0;
+        }
+        
+        .section h4 {
+            color: #555;
+            font-size: 1.3em;
+            margin: 25px 0 10px 0;
+        }
+        
+        .section p {
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .feature-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .feature-desc {
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+        }
+        
+        .steps li {
+            counter-increment: step-counter;
+            margin: 25px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-right: 5px solid #667eea;
+            position: relative;
+        }
+        
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            direction: ltr;
+            text-align: left;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .code-comment {
+            color: #5c6370;
+        }
+        
+        .code-keyword {
+            color: #c678dd;
+        }
+        
+        .code-string {
+            color: #98c379;
+        }
+        
+        .code-function {
+            color: #61afef;
+        }
+        
+        .tip-box {
+            background: #fff3cd;
+            border-right: 5px solid #ffc107;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .tip-box h4 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .warning-box {
+            background: #f8d7da;
+            border-right: 5px solid #dc3545;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .warning-box h4 {
+            color: #721c24;
+            margin-bottom: 15px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-right: 5px solid #28a745;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .success-box h4 {
+            color: #155724;
+            margin-bottom: 15px;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            border-right: 5px solid #17a2b8;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .info-box h4 {
+            color: #0c5460;
+            margin-bottom: 15px;
+        }
+        
+        .example-box {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-right: 5px solid #2196F3;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #1976D2;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .tasks-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 50px 0;
+        }
+        
+        .tasks-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .task-level {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .task-level h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .task-level ul {
+            margin-right: 25px;
+        }
+        
+        .task-level li {
+            margin: 12px 0;
+            font-size: 1.05em;
+        }
+        
+        .cta-section {
+            background: #f8f9fa;
+            padding: 50px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 50px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 20px 10px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .faq-section {
+            margin: 50px 0;
+        }
+        
+        .faq-item {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-right: 5px solid #667eea;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .faq-answer {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .meta-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🐍 Python להנדסאים</h1>
+            <div class="header-subtitle">
+                המדריך המלא להיכרות, הבנה והפעלת קוד Python ללא ידע תכנות מוקדם
+            </div>
+            <div class="meta-info">
+                <div class="meta-item">👨‍🏫 מאת: יעקב בידני</div>
+                <div class="meta-item">📅 עודכן: דצמבר 2025</div>
+                <div class="meta-item">⏱️ זמן קריאה: 20 דקות</div>
+                <div class="meta-item">📊 רמת קושי: בסיסי</div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-buttons">
+            <a href="#main-content" class="nav-btn">📖 תוכן המדריך</a>
+            <a href="#tasks" class="nav-btn">📋 משימות</a>
+            <a href="#join-course" class="nav-btn">🚀 הצטרף לקורס</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            
+            <!-- Table of Contents -->
+            <div id="main-content" class="toc">
+                <h2>📋 תוכן המדריך</h2>
+                <ol>
+                    <li><a href="#what-is-python">מה זה Python ולמה זה רלוונטי להנדסאים?</a></li>
+                    <li><a href="#ai-prompting">איך לבקש מ-AI ליצור קוד Python?</a></li>
+                    <li><a href="#running-code">סביבות הרצה: VS Code, Terminal ו-Notepad++</a></li>
+                    <li><a href="#understanding-errors">הבנת שגיאות ודיבוג קוד</a></li>
+                    <li><a href="#libraries">התקנת ספריות וחבילות</a></li>
+                    <li><a href="#real-examples">דוגמאות מעשיות מהתעשייה</a></li>
+                    <li><a href="#summary">מסקנות ויישום מעשי</a></li>
+                    <li><a href="#tasks">משימות לשבוע הקרוב</a></li>
+                </ol>
+            </div>
+
+            <!-- Introduction -->
+            <section class="section">
+                <h2>מהפכת התכנות להנדסאים</h2>
+                <p>
+                    בעולם הנדסי מודרני, **אתם לא צריכים להיות מתכנתים** כדי להשתמש בקוד. בדיוק כמו שאתם משתמשים באקסל בלי להבין את הקוד שמאחוריו, כך גם Python הפך לכלי נגיש לכל הנדסאי.
+                </p>
+                <p>
+                    המדריך הזה ילמד אתכם **להיות צרכנים חכמים של קוד** - לדעת מתי להשתמש בו, איך לבקש אותו מבינה מלאכותית, ואיך להריץ אותו בביטחון. זה לא קורס תכנות, זה קורס **אוריינות דיגיטלית** לעידן ה-AI.
+                </p>
+            </section>
+
+            <!-- What is Python -->
+            <section id="what-is-python" class="section">
+                <h2>🐍 מה זה Python ולמה זה רלוונטי להנדסאים?</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">🚀</div>
+                        <div class="feature-title">אוטומציה</div>
+                        <div class="feature-desc">
+                            מחשבונים מורכבים, עיבוד נתונים, יצירת דוחות - כל מה שעושים ידנית פעמיים, ראוי להפוך לקוד.
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">ניתוח נתונים</div>
+                        <div class="feature-desc">
+                            עיבוד מדידות, גרפים, סטטיסטיקה - Python עושה את זה מהר יותר ומדויק יותר מאקסל.
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🔧</div>
+                        <div class="feature-title">כלים מותאמים</div>
+                        <div class="feature-desc">
+                            חישובי חוזק, סימולציות, בדיקות איכות - AI יכול לכתוב כלי ייעודי בדיוק בשבילכם.
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">💡</div>
+                        <div class="feature-title">פשוט ללמוד</div>
+                        <div class="feature-desc">
+                            בניגוד ל-C או Java, Python כתוב כמעט כמו אנגלית רגילה - קל להבין מה הקוד עושה.
+                        </div>
+                    </div>
+                </div>
+
+                <h3>מתי תשתמשו ב-Python בעבודה?</h3>
+                <ul class="steps">
+                    <li>
+                        <strong>חישובים חוזרים:</strong> יש לכם נוסחה מורכבת שאתם מחשבים 10 פעמים ביום? Python יעשה את זה ב-1 שנייה.
+                    </li>
+                    <li>
+                        <strong>עיבוד קבצים:</strong> צריך לקרוא 50 דוחות Excel ולהפיק ממוצעים? Python יעשה את זה בלחיצת כפתור.
+                    </li>
+                    <li>
+                        <strong>ויזואליזציה:</strong> גרפים מקצועיים מנתוני מדידות - בזמן אמת.
+                    </li>
+                    <li>
+                        <strong>אינטגרציה:</strong> חיבור בין מערכות שונות - ERP, חיישנים, בסיסי נתונים.
+                    </li>
+                </ul>
+
+                <div class="example-box">
+                    <div class="example-title">📈 דוגמה: הנדסאי מכונות בתעשייה</div>
+                    <p>
+                        <strong>המצב:</strong> בכל שבוע מקבל 20 קבצי CSV מחיישני טמפרטורה במפעל. צריך לחשב ממוצעים, למצוא חריגות, וליצור גרף.
+                    </p>
+                    <p>
+                        <strong>הפתרון הישן:</strong> 2 שעות עבודה ידנית באקסל, סיכוי לטעויות.
+                    </p>
+                    <p>
+                        <strong>הפתרון החדש:</strong> סקריפט Python של 20 שורות שעובד אוטומטית כל יום ב-8:00 בבוקר.
+                    </p>
+                </div>
+            </section>
+
+            <!-- AI Prompting -->
+            <section id="ai-prompting" class="section">
+                <h2>🤖 איך לבקש מ-AI ליצור קוד Python?</h2>
+                
+                <p>
+                    זה החלק הכי חשוב! **תכנות זה לא כתיבת קוד - זה הגדרת בעיה בצורה ברורה**. ככל שתדעו להסביר ל-AI מה אתם צריכים, כך תקבלו קוד טוב יותר.
+                </p>
+
+                <h3>המבנה של Prompt טוב לקוד Python</h3>
+                
+                <ol class="steps">
+                    <li>
+                        <strong>הקשר מקצועי:</strong>
+                        <div class="code-block">
+"אני הנדסאי אוטומוטיבי ואני עובד עם נתוני בדיקות רכב"
+                        </div>
+                    </li>
+                    <li>
+                        <strong>תיאור הבעיה:</strong>
+                        <div class="code-block">
+"יש לי 50 קבצי Excel עם תוצאות מדידות מהילוך. כל קובץ מכיל עמודות: 
+מהירות, סל"ד, צריכת דלק"
+                        </div>
+                    </li>
+                    <li>
+                        <strong>מה אתם רוצים:</strong>
+                        <div class="code-block">
+"אני צריך לחשב את הממוצע של צריכת הדלק לכל טווח מהירויות (0-50, 50-100, 100+)
+ולשמור את התוצאות בקובץ חדש"
+                        </div>
+                    </li>
+                    <li>
+                        <strong>דרישות טכניות:</strong>
+                        <div class="code-block">
+"הקוד צריך לרוץ ב-Windows 11, עם Python 3.11
+הקבצים נמצאים בתיקייה C:\Data\Tests"
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="success-box">
+                    <h4>✅ דוגמת Prompt מושלם</h4>
+                    <p>
+                        "אני הנדסאי חשמל בחברת אלקטרוניקה. יש לי 100 קבצי CSV עם מדידות מתח וזרם מלוח בקרה. 
+                        כל קובץ מכיל: timestamp, voltage, current. 
+                        אני צריך סקריפט Python ש:
+                        <br>1. קורא את כל הקבצים מתיקייה
+                        <br>2. מחשב הספק ממוצע לכל קובץ (P=V*I)
+                        <br>3. מציג גרף של ההספק לאורך זמן
+                        <br>4. שומר את התוצאות ל-Excel חדש
+                        <br><br>
+                        הקוד צריך לרוץ ב-VS Code על Windows, עם Python 3.10 ומעלה.
+                        תוסיף הערות בעברית בקוד כדי שאבין מה כל חלק עושה."
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h4>❌ Prompt גרוע - הימנעו!</h4>
+                    <p>
+                        "כתוב לי קוד שקורא קבצים ועושה חישובים"
+                    </p>
+                    <p><strong>למה זה רע?</strong></p>
+                    <ul>
+                        <li>לא ברור איזה סוג קבצים</li>
+                        <li>לא ברור איזה חישובים</li>
+                        <li>לא ברור מה התוצאה הרצויה</li>
+                        <li>ה-AI יצטרך לנחש ולא יפגע במטרה</li>
+                    </ul>
+                </div>
+
+                <h3>טיפים להצלחה ב-Prompting</h3>
+                
+                <div class="tip-box">
+                    <h4>💡 טיפ 1: התחילו קטן</h4>
+                    <p>
+                        אל תבקשו קוד שעושה 10 דברים בבת אחת. התחילו מפונקציה אחת, בדקו שהיא עובדת, ואז הוסיפו פיצ'רים.
+                    </p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 טיפ 2: בקשו הסברים</h4>
+                    <p>
+                        תמיד הוסיפו: "תוסיף הערות מפורטות בעברית שמסבירות כל שלב"
+                        <br>ככה תלמדו לאט לאט מה הקוד עושה.
+                    </p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 טיפ 3: ציינו גרסת Python</h4>
+                    <p>
+                        יש הבדלים בין Python 2.7 ל-3.11. תמיד ציינו איזו גרסה מותקנת אצלכם.
+                    </p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 טיפ 4: בקשו דוגמת קלט</h4>
+                    <p>
+                        "גם תכין לי קובץ דוגמה של הנתונים שאני צריך להכניס"
+                        <br>ככה תוכלו לבדוק מיד אם הקוד עובד.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Running Code -->
+            <section id="running-code" class="section">
+                <h2>💻 סביבות הרצה: VS Code, Terminal ו-Notepad++</h2>
+                
+                <p>
+                    לאחר שקיבלתם קוד מ-AI, הגיע הזמן להריץ אותו. יש 3 דרכים עיקריות:
+                </p>
+
+                <h3>1️⃣ VS Code (מומלץ למתחילים!)</h3>
+                
+                <div class="info-box">
+                    <h4>🎯 למה VS Code?</h4>
+                    <ul>
+                        <li>✅ חינמי ופשוט להתקנה</li>
+                        <li>✅ הדגשת תחביר צבעונית - קל לזהות שגיאות</li>
+                        <li>✅ השלמה אוטומטית של קוד</li>
+                        <li>✅ הרצת קוד בלחיצת כפתור</li>
+                        <li>✅ תמיכה בעברית RTL</li>
+                    </ul>
+                </div>
+
+                <h4>התקנה והרצה ב-VS Code:</h4>
+                <ol class="steps">
+                    <li>
+                        <strong>הורדה והתקנה:</strong>
+                        <br>גשו ל-<a href="https://code.visualstudio.com/" target="_blank">code.visualstudio.com</a> והורידו את הגרסה ל-Windows
+                    </li>
+                    <li>
+                        <strong>התקנת Python Extension:</strong>
+                        <br>בתוך VS Code, לחצו על אייקון ההרחבות (ריבועים בצד) וחפשו "Python" של Microsoft - התקינו
+                    </li>
+                    <li>
+                        <strong>יצירת קובץ Python:</strong>
+                        <br>File → New File → שמרו בשם <code>test.py</code> (חובה הסיומת .py)
+                    </li>
+                    <li>
+                        <strong>הדבקת הקוד:</strong>
+                        <br>העתיקו את הקוד מ-ChatGPT/Claude והדביקו לקובץ
+                    </li>
+                    <li>
+                        <strong>הרצה:</strong>
+                        <br>לחצו על כפתור ▶️ (Run) למעלה מימין, או Ctrl+F5
+                    </li>
+                </ol>
+
+                <div class="code-block">
+<span class="code-comment"># דוגמת קוד פשוטה להרצה ראשונה</span>
+<span class="code-keyword">print</span>(<span class="code-string">"שלום עולם!"</span>)
+<span class="code-keyword">print</span>(<span class="code-string">"Python עובד!"</span>)
+
+<span class="code-comment"># חישוב פשוט</span>
+voltage = <span class="code-string">220</span>  <span class="code-comment"># וולט</span>
+current = <span class="code-string">5</span>    <span class="code-comment"># אמפר</span>
+power = voltage * current
+<span class="code-keyword">print</span>(<span class="code-string">f"ההספק הוא: {power} וואט"</span>)
+                </div>
+
+                <h3>2️⃣ Terminal / Command Prompt</h3>
+                
+                <p>
+                    לפעמים צריך להריץ קוד ישירות מהטרמינל - למשל בשרת או במחשב בלי VS Code.
+                </p>
+
+                <h4>הרצה דרך Terminal:</h4>
+                <ol class="steps">
+                    <li>
+                        <strong>פתיחת CMD:</strong>
+                        <br>לחצו Win+R, הקלידו <code>cmd</code> ו-Enter
+                    </li>
+                    <li>
+                        <strong>ניווט לתיקייה:</strong>
+                        <div class="code-block">
+cd C:\Users\YourName\Desktop
+                        </div>
+                    </li>
+                    <li>
+                        <strong>הרצת הקובץ:</strong>
+                        <div class="code-block">
+python test.py
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="warning-box">
+                    <h4>⚠️ שגיאה נפוצה</h4>
+                    <p>
+                        אם אתם מקבלים <code>'python' is not recognized</code>:
+                        <br><br>
+                        <strong>הפתרון:</strong> Python לא מותקן או לא בנתיב המערכת (PATH).
+                        <br>1. התקינו Python מ-<a href="https://www.python.org/downloads/" target="_blank">python.org</a>
+                        <br>2. בהתקנה, **סמנו את התיבה** "Add Python to PATH"
+                        <br>3. אחרי ההתקנה, סגרו ופתחו מחדש את ה-CMD
+                    </p>
+                </div>
+
+                <h3>3️⃣ Notepad++ (לעריכה מהירה בלבד)</h3>
+                
+                <p>
+                    Notepad++ הוא עורך טקסט מתקדם, לא סביבת פיתוח. משתמשים בו ל:
+                </p>
+                <ul>
+                    <li>✅ עריכה מהירה של קוד קיים</li>
+                    <li>✅ צפייה בהדגשת תחביר</li>
+                    <li>✅ שינויים קטנים בלי לפתוח VS Code</li>
+                    <li>❌ לא מריצים קוד ישירות מהתוכנה</li>
+                </ul>
+
+                <div class="tip-box">
+                    <h4>💡 המלצה לתזרים עבודה</h4>
+                    <p>
+                        <strong>VS Code</strong> - לפיתוח ובדיקה
+                        <br><strong>Terminal</strong> - להרצה אוטומטית (סקריפטים מתוזמנים)
+                        <br><strong>Notepad++</strong> - לעריכות קטנות בשטח
+                    </p>
+                </div>
+            </section>
+
+            <!-- Understanding Errors -->
+            <section id="understanding-errors" class="section">
+                <h2>🐛 הבנת שגיאות ודיבוג קוד</h2>
+                
+                <p>
+                    **שגיאות זה חלק מהתהליך!** גם מתכנתים מנוסים מקבלים שגיאות כל הזמן. המיומנות היא **להבין מה השגיאה אומרת ואיך לתקן**.
+                </p>
+
+                <h3>סוגי שגיאות נפוצות</h3>
+
+                <h4>1. Syntax Error - שגיאת תחביר</h4>
+                <div class="example-box">
+                    <div class="example-title">❌ דוגמה לשגיאה:</div>
+                    <div class="code-block">
+<span class="code-keyword">print</span>(<span class="code-string">"שלום"</span>  <span class="code-comment"># חסר סוגר סוגר</span>
+
+<span class="code-comment"># השגיאה:</span>
+SyntaxError: unexpected EOF while parsing
+                    </div>
+                    <p><strong>מה קרה?</strong> פייתון מצפה לסוגר סוגר אבל לא מצא אותו.</p>
+                    <p><strong>איך לתקן?</strong> הוסיפו את הסוגר החסר: <code>print("שלום")</code></p>
+                </div>
+
+                <h4>2. NameError - משתנה לא קיים</h4>
+                <div class="example-box">
+                    <div class="example-title">❌ דוגמה לשגיאה:</div>
+                    <div class="code-block">
+<span class="code-keyword">print</span>(voltage)  <span class="code-comment"># המשתנה לא הוגדר קודם</span>
+
+<span class="code-comment"># השגיאה:</span>
+NameError: name 'voltage' is not defined
+                    </div>
+                    <p><strong>מה קרה?</strong> ניסינו להשתמש במשתנה שלא הוגדר לפני כן.</p>
+                    <p><strong>איך לתקן?</strong> הוסיפו שורה לפני: <code>voltage = 220</code></p>
+                </div>
+
+                <h4>3. IndentationError - בעיית הזחה</h4>
+                <div class="example-box">
+                    <div class="example-title">❌ דוגמה לשגיאה:</div>
+                    <div class="code-block">
+<span class="code-keyword">if</span> voltage > <span class="code-string">200</span>:
+<span class="code-keyword">print</span>(<span class="code-string">"מתח גבוה"</span>)  <span class="code-comment"># חסר הזחה!</span>
+
+<span class="code-comment"># השגיאה:</span>
+IndentationError: expected an indented block
+                    </div>
+                    <p><strong>מה קרה?</strong> Python עובד עם הזחות (רווחים) במקום סוגריים מסולסלים.</p>
+                    <p><strong>איך לתקן?</strong> הוסיפו 4 רווחים או Tab לפני השורה:</p>
+                    <div class="code-block">
+<span class="code-keyword">if</span> voltage > <span class="code-string">200</span>:
+    <span class="code-keyword">print</span>(<span class="code-string">"מתח גבוה"</span>)  <span class="code-comment"># עכשיו יעבוד!</span>
+                    </div>
+                </div>
+
+                <h4>4. ModuleNotFoundError - חבילה לא מותקנת</h4>
+                <div class="example-box">
+                    <div class="example-title">❌ דוגמה לשגיאה:</div>
+                    <div class="code-block">
+<span class="code-keyword">import</span> pandas  <span class="code-comment"># ניסיון לייבא חבילה לא מותקנת</span>
+
+<span class="code-comment"># השגיאה:</span>
+ModuleNotFoundError: No module named 'pandas'
+                    </div>
+                    <p><strong>מה קרה?</strong> הקוד מנסה להשתמש בחבילה שלא הותקנה במחשב.</p>
+                    <p><strong>איך לתקן?</strong> התקינו את החבילה דרך Terminal:</p>
+                    <div class="code-block">
+pip install pandas
+                    </div>
+                </div>
+
+                <h3>איך לבקש מ-AI לתקן שגיאות?</h3>
+
+                <div class="success-box">
+                    <h4>✅ הדרך הנכונה לבקש עזרה</h4>
+                    <ol>
+                        <li>העתיקו את **כל הודעת השגיאה** (לא רק השורה האחרונה)</li>
+                        <li>צרפו את **השורות הרלוונטיות מהקוד**</li>
+                        <li>הסבירו **מה ניסיתם לעשות**</li>
+                    </ol>
+                    <p><strong>דוגמת Prompt טוב:</strong></p>
+                    <div class="code-block">
+"אני מנסה להריץ קוד שקורא קובץ Excel ומקבל שגיאה:
+
+FileNotFoundError: [Errno 2] No such file or directory: 'data.xlsx'
+
+הקוד שלי:
+import pandas as pd
+df = pd.read_excel('data.xlsx')
+
+הקובץ נמצא בתיקייה C:\Projects\Data
+איך אני מתקן את זה?"
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 טיפ: שימוש ב-Google לשגיאות</h4>
+                    <p>
+                        העתיקו את הודעת השגיאה לגוגל (בלי הנתיבים הספציפיים שלכם).
+                        <br>למשל: <code>"ModuleNotFoundError pandas"</code>
+                        <br>תמצאו המון פתרונות ב-StackOverflow!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Libraries -->
+            <section id="libraries" class="section">
+                <h2>📦 התקנת ספריות וחבילות</h2>
+                
+                <p>
+                    Python בסיסי מגיע עם פונקציות בסיסיות בלבד. רוב הכוח של Python בא מ**ספריות חיצוניות** שאפשר להתקין בחינם.
+                </p>
+
+                <h3>ספריות חיוניות להנדסאים</h3>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Pandas</div>
+                        <div class="feature-desc">
+                            עיבוד נתונים - Excel, CSV, SQL. זה כמו Excel על סטרואידים.
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-title">Matplotlib</div>
+                        <div class="feature-desc">
+                            יצירת גרפים מקצועיים - קווים, עמודות, פיזור, ועוד.
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🔢</div>
+                        <div class="feature-title">NumPy</div>
+                        <div class="feature-desc">
+                            חישובים מתמטיים מהירים - מטריצות, וקטורים, אלגברה.
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📑</div>
+                        <div class="feature-title">openpyxl</div>
+                        <div class="feature-desc">
+                            קריאה וכתיבה לקבצי Excel עם פורמט מתקדם.
+                        </div>
+                    </div>
+                </div>
+
+                <h3>איך מתקינים ספרייה?</h3>
+
+                <ol class="steps">
+                    <li>
+                        <strong>פתחו Terminal/CMD</strong>
+                        <br>Win+R → <code>cmd</code> → Enter
+                    </li>
+                    <li>
+                        <strong>הריצו את הפקודה:</strong>
+                        <div class="code-block">
+pip install pandas matplotlib numpy openpyxl
+                        </div>
+                        <p>זה יתקין את כל 4 הספריות בבת אחת!</p>
+                    </li>
+                    <li>
+                        <strong>המתינו לסיום</strong>
+                        <br>תראו "Successfully installed..." כשזה מסיים
+                    </li>
+                    <li>
+                        <strong>בדיקה:</strong>
+                        <div class="code-block">
+python -c "import pandas; print('Pandas עובד!')"
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="warning-box">
+                    <h4>⚠️ בעיות נפוצות בהתקנה</h4>
+                    <p><strong>1. "pip is not recognized"</strong></p>
+                    <p>פתרון: Python לא בנתיב המערכת. התקינו מחדש Python וסמנו "Add to PATH"</p>
+                    <br>
+                    <p><strong>2. "Permission denied"</strong></p>
+                    <p>פתרון: הריצו את ה-CMD כמנהל (Right-click → Run as Administrator)</p>
+                    <br>
+                    <p><strong>3. "Could not find a version"</strong></p>
+                    <p>פתרון: בדקו חיבור לאינטרנט, או שינו שרת pip</p>
+                </div>
+
+                <h3>שדרוג ספריות קיימות</h3>
+                <div class="code-block">
+<span class="code-comment"># שדרוג ספרייה אחת</span>
+pip install --upgrade pandas
+
+<span class="code-comment"># שדרוג כל הספריות</span>
+pip list --outdated  <span class="code-comment"># רשימת ספריות מיושנות</span>
+pip install --upgrade pandas matplotlib numpy
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 סביבות וירטואליות (מתקדם)</h4>
+                    <p>
+                        אם אתם עובדים על מספר פרויקטים שונים, כדאי ליצור סביבה וירטואלית לכל פרויקט.
+                        <br>כך ספריות של פרויקט אחד לא מתערבבות עם אחר.
+                    </p>
+                    <div class="code-block">
+<span class="code-comment"># יצירת סביבה וירטואלית</span>
+python -m venv myproject_env
+
+<span class="code-comment"># הפעלת הסביבה (Windows)</span>
+myproject_env\Scripts\activate
+
+<span class="code-comment"># כעת כל התקנה תהיה בסביבה הזו בלבד</span>
+pip install pandas
+                    </div>
+                </div>
+            </section>
+
+            <!-- Real Examples -->
+            <section id="real-examples" class="section">
+                <h2>🎯 דוגמאות מעשיות מהתעשייה</h2>
+
+                <h3>דוגמה 1: ניתוח נתוני בדיקות איכות</h3>
+                <div class="example-box">
+                    <div class="example-title">📊 הנדסאי איכות במפעל</div>
+                    <p><strong>המצב:</strong> 200 קבצי Excel עם מדידות קוטר של ברגים</p>
+                    <p><strong>הצורך:</strong> למצוא ממוצע, סטיית תקן, וחריגות</p>
+                    <p><strong>הפתרון הישן:</strong> 3 שעות עבודה ידנית באקסל</p>
+                    <p><strong>הפתרון ב-Python:</strong> 30 שניות!</p>
+                </div>
+
+                <div class="code-block">
+<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+<span class="code-keyword">import</span> os
+
+<span class="code-comment"># קריאת כל קבצי ה-Excel מהתיקייה</span>
+folder = <span class="code-string">"C:/Data/QualityTests"</span>
+all_data = []
+
+<span class="code-keyword">for</span> file <span class="code-keyword">in</span> os.listdir(folder):
+    <span class="code-keyword">if</span> file.endswith(<span class="code-string">".xlsx"</span>):
+        df = pd.<span class="code-function">read_excel</span>(os.path.join(folder, file))
+        all_data.append(df)
+
+<span class="code-comment"># איחוד כל הנתונים</span>
+combined = pd.<span class="code-function">concat</span>(all_data)
+
+<span class="code-comment"># חישוב סטטיסטיקה</span>
+<span class="code-keyword">print</span>(<span class="code-string">f"ממוצע קוטר: {combined['diameter'].mean():.2f} מ"מ"</span>)
+<span class="code-keyword">print</span>(<span class="code-string">f"סטיית תקן: {combined['diameter'].std():.2f} מ"מ"</span>)
+
+<span class="code-comment"># מציאת חריגות (מעל/מתחת ל-3 סטיות תקן)</span>
+outliers = combined[abs(combined[<span class="code-string">'diameter'</span>] - combined[<span class="code-string">'diameter'</span>].mean()) > <span class="code-string">3</span> * combined[<span class="code-string">'diameter'</span>].std()]
+<span class="code-keyword">print</span>(<span class="code-string">f"נמצאו {len(outliers)} חריגות"</span>)
+
+<span class="code-comment"># שמירת התוצאות</span>
+combined.<span class="code-function">to_excel</span>(<span class="code-string">"summary_report.xlsx"</span>, index=<span class="code-keyword">False</span>)
+                </div>
+
+                <h3>דוגמה 2: חישוב עלויות חומרים</h3>
+                <div class="example-box">
+                    <div class="example-title">💰 הנדסאי מכונות - הערכת עלויות</div>
+                    <p><strong>המצב:</strong> רשימת חלקים עם כמויות ומחירים</p>
+                    <p><strong>הצורך:</strong> חישוב עלות כוללת + מע"מ + 15% רווח</p>
+                </div>
+
+                <div class="code-block">
+<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+
+<span class="code-comment"># קריאת רשימת חלקים</span>
+parts = pd.<span class="code-function">read_excel</span>(<span class="code-string">"parts_list.xlsx"</span>)
+
+<span class="code-comment"># חישוב עלות כוללת</span>
+parts[<span class="code-string">'total_cost'</span>] = parts[<span class="code-string">'quantity'</span>] * parts[<span class="code-string">'unit_price'</span>]
+
+<span class="code-comment"># הוספת מע"מ (17%)</span>
+parts[<span class="code-string">'with_vat'</span>] = parts[<span class="code-string">'total_cost'</span>] * <span class="code-string">1.17</span>
+
+<span class="code-comment"># הוספת רווח (15%)</span>
+parts[<span class="code-string">'final_price'</span>] = parts[<span class="code-string">'with_vat'</span>] * <span class="code-string">1.15</span>
+
+<span class="code-comment"># סיכום</span>
+<span class="code-keyword">print</span>(<span class="code-string">f"עלות חומרים: ₪{parts['total_cost'].sum():,.2f}"</span>)
+<span class="code-keyword">print</span>(<span class="code-string">f"כולל מע\"מ: ₪{parts['with_vat'].sum():,.2f}"</span>)
+<span class="code-keyword">print</span>(<span class="code-string">f"מחיר למכירה: ₪{parts['final_price'].sum():,.2f}"</span>)
+
+<span class="code-comment"># שמירת הצעת מחיר</span>
+parts.<span class="code-function">to_excel</span>(<span class="code-string">"price_quote.xlsx"</span>, index=<span class="code-keyword">False</span>)
+                </div>
+
+                <h3>דוגמה 3: ויזואליזציה של נתוני ייצור</h3>
+                <div class="example-box">
+                    <div class="example-title">📈 הנדסאי תהליכים - דוח ייצור יומי</div>
+                    <p><strong>המצב:</strong> נתוני ייצור שעתיים לאורך שבוע</p>
+                    <p><strong>הצורך:</strong> גרף מגמות לזיהוי בעיות</p>
+                </div>
+
+                <div class="code-block">
+<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+<span class="code-keyword">import</span> matplotlib.pyplot <span class="code-keyword">as</span> plt
+
+<span class="code-comment"># קריאת נתוני ייצור</span>
+production = pd.<span class="code-function">read_excel</span>(<span class="code-string">"weekly_production.xlsx"</span>)
+
+<span class="code-comment"># המרת עמודת תאריך</span>
+production[<span class="code-string">'datetime'</span>] = pd.<span class="code-function">to_datetime</span>(production[<span class="code-string">'date'</span>] + <span class="code-string">' '</span> + production[<span class="code-string">'hour'</span>])
+
+<span class="code-comment"># יצירת גרף</span>
+plt.<span class="code-function">figure</span>(figsize=(<span class="code-string">12</span>, <span class="code-string">6</span>))
+plt.<span class="code-function">plot</span>(production[<span class="code-string">'datetime'</span>], production[<span class="code-string">'units_produced'</span>], marker=<span class="code-string">'o'</span>)
+plt.<span class="code-function">title</span>(<span class="code-string">'ייצור שעתי - שבוע 48'</span>, fontsize=<span class="code-string">16</span>)
+plt.<span class="code-function">xlabel</span>(<span class="code-string">'תאריך ושעה'</span>)
+plt.<span class="code-function">ylabel</span>(<span class="code-string">'יחידות שיוצרו'</span>)
+plt.<span class="code-function">grid</span>(<span class="code-keyword">True</span>, alpha=<span class="code-string">0.3</span>)
+plt.<span class="code-function">xticks</span>(rotation=<span class="code-string">45</span>)
+plt.<span class="code-function">tight_layout</span>()
+
+<span class="code-comment"># שמירת הגרף</span>
+plt.<span class="code-function">savefig</span>(<span class="code-string">'production_chart.png'</span>, dpi=<span class="code-string">300</span>)
+<span class="code-keyword">print</span>(<span class="code-string">"הגרף נשמר בהצלחה!"</span>)
+                </div>
+            </section>
+
+            <!-- Summary -->
+            <section id="summary" class="section">
+                <h2>🎯 מסקנות ויישום מעשי</h2>
+
+                <h3>✅ מה למדנו היום?</h3>
+                <ul class="steps">
+                    <li>
+                        <strong>Python זה כלי, לא מקצוע:</strong>
+                        <br>אתם לא צריכים להיות מתכנתים. Python הוא כלי עבודה כמו Excel או AutoCAD.
+                    </li>
+                    <li>
+                        <strong>AI זה השותף שלכם:</strong>
+                        <br>ככל שתדעו להסביר טוב יותר מה אתם צריכים, כך תקבלו קוד טוב יותר.
+                    </li>
+                    <li>
+                        <strong>שגיאות זה נורמלי:</strong>
+                        <br>גם מומחים מקבלים שגיאות. חשוב לדעת איך לקרוא אותן ולתקן.
+                    </li>
+                    <li>
+                        <strong>ספריות מרחיבות יכולות:</strong>
+                        <br>Python בסיסי זה רק התחלה. הכוח האמיתי בא מהספריות.
+                    </li>
+                    <li>
+                        <strong>התחילו קטן:</strong>
+                        <br>אל תנסו ליצור מערכת ענקית. התחילו מסקריפט אחד שעושה דבר אחד טוב.
+                    </li>
+                </ul>
+
+                <h3>🎨 תהליך עבודה מומלץ</h3>
+                <ol class="steps">
+                    <li>
+                        <strong>הגדירו את הבעיה:</strong>
+                        <br>מה הנתונים? מה התוצאה? כמה זמן זה לוקח עכשיו?
+                    </li>
+                    <li>
+                        <strong>כתבו Prompt ל-AI:</strong>
+                        <br>תיאור ברור + דוגמת קלט + דרישות טכניות
+                    </li>
+                    <li>
+                        <strong>קבלו ובדקו קוד:</strong>
+                        <br>הריצו על דוגמה קטנה קודם!
+                    </li>
+                    <li>
+                        <strong>תקנו שגיאות:</strong>
+                        <br>קראו את ההודעה, חפשו בגוגל, שאלו את ה-AI
+                    </li>
+                    <li>
+                        <strong>שפרו בהדרגה:</strong>
+                        <br>הוסיפו פיצ'רים אחד אחרי השני
+                    </li>
+                </ol>
+
+                <h3>⚠️ טעויות נפוצות להימנע מהן</h3>
+                <div class="warning-box">
+                    <ul>
+                        <li>❌ לנסות ללמוד את כל Python מאפס - **לא צריך!**</li>
+                        <li>❌ לכתוב Prompt עמום ולצפות לקוד מושלם</li>
+                        <li>❌ לוותר אחרי שגיאה אחת - זה חלק מהתהליך</li>
+                        <li>❌ להריץ קוד לא מובן על נתונים חשובים - תמיד תבדקו קודם!</li>
+                        <li>❌ לא לשמור גרסאות - השתמשו ב-Git או לפחות בתיקיות גיבוי</li>
+                    </ul>
+                </div>
+
+                <h3>📚 משאבים המשך למידה</h3>
+                <div class="info-box">
+                    <ul>
+                        <li>📖 <strong>תיעוד רשמי:</strong> <a href="https://docs.python.org/3/" target="_blank">docs.python.org</a></li>
+                        <li>💬 <strong>קהילה:</strong> Stack Overflow - כמעט כל שגיאה כבר נשאלה שם</li>
+                        <li>🎥 <strong>YouTube:</strong> ערוץ "Corey Schafer" - טוטוריאלים מצוינים</li>
+                        <li>🤖 <strong>AI מומלצים:</strong> ChatGPT, Claude, GitHub Copilot</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Tasks -->
+            <section id="tasks" class="tasks-section">
+                <h2>📋 משימות לשבוע הקרוב</h2>
+
+                <div class="task-level">
+                    <h3>🎯 רמה בסיסית (מתחילים)</h3>
+                    <ul>
+                        <li>התקינו Python + VS Code במחשב שלכם</li>
+                        <li>כתבו "Hello World" והריצו בהצלחה</li>
+                        <li>בקשו מ-ChatGPT/Claude קוד שמחשב שטח מלבן</li>
+                        <li>נסו לגרום לשגיאה במכוון (למשל, תמחקו סוגר) ותתקנו אותה</li>
+                        <li>התקינו את הספרייה pandas והריצו: <code>import pandas</code></li>
+                    </ul>
+                </div>
+
+                <div class="task-level">
+                    <h3>⚡ רמה מתקדמת (מנוסים)</h3>
+                    <ul>
+                        <li>בחרו בעיה אמיתית מהעבודה שאפשר לפתור בקוד</li>
+                        <li>כתבו Prompt מפורט ל-AI וקבלו קוד</li>
+                        <li>הריצו את הקוד על נתונים אמיתיים (גבו קודם!)</li>
+                        <li>צרו גרף ויזואלי אחד עם matplotlib</li>
+                        <li>שתפו את הקוד עם עמית ותנו לו להריץ</li>
+                        <li>למדו על Git ושמרו את הקוד ב-GitHub</li>
+                    </ul>
+                </div>
+
+                <div class="success-box" style="background: rgba(255,255,255,0.2); border-right-color: white;">
+                    <h4 style="color: white;">😎 בונוס - אתגר השבוע</h4>
+                    <p style="color: white;">
+                        <strong>אוטומציה של משימה חוזרת:</strong>
+                        <br>בחרו משהו שאתם עושים לפחות פעמיים בשבוע (דוח, חישוב, סיכום) ובנו סקריפט Python שעושה את זה אוטומטית. תתזמנו אותו לרוץ אוטומטית עם Windows Task Scheduler!
+                    </p>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section id="join-course" class="cta-section">
+                <h2>🎯 סיימת את המדריך? זמן להמשיך ללמוד!</h2>
+                
+                <p style="font-size: 1.2em; margin: 20px 0;">
+                    <strong>אם הגעת לכאן כחלק ממטלה בקורס</strong>
+                    <br>חזור עכשיו לפורטל התלמידים להמשך הלמידה והגשת המטלות
+                </p>
+
+                <a href="https://edu-manage.org/" class="cta-button">
+                    🎓 חזור לפורטל התלמידים - EduManage
+                </a>
+
+                <div style="margin-top: 40px; text-align: right;">
+                    <h3>📚 המשך המסע שלך:</h3>
+                    <ul style="list-style: none; font-size: 1.1em;">
+                        <li>✅ סמן את המטלה כהושלמה</li>
+                        <li>📝 השלם את השאלות והתרגילים</li>
+                        <li>💬 שתף את החוויה בפורום הקורס</li>
+                        <li>🎯 עבור למטלה הבאה</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Real World Impact -->
+            <section class="section">
+                <h2>🚀 Python זה השפה החדשה של ההנדסה</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">📋</div>
+                        <div class="feature-title">פרויקטים מעשיים</div>
+                        <div class="feature-desc">
+                            קוד אמיתי לבעיות אמיתיות
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">👨‍🏫</div>
+                        <div class="feature-title">משוב אישי</div>
+                        <div class="feature-desc">
+                            הדרכה ממהנדסים מנוסים
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🏆</div>
+                        <div class="feature-title">פורטפוליו</div>
+                        <div class="feature-desc">
+                            הצגת הפרויקטים שלך
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">👥</div>
+                        <div class="feature-title">קהילה</div>
+                        <div class="feature-desc">
+                            רשת מקצועית וחברתית
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 40px 0;">
+                    <a href="https://edu-manage.org/JoinCourse?org=69391901350762829f9a50b1" class="cta-button">
+                        🚀 הצטרף לקורס החינמי עכשיו!
+                    </a>
+                    <p style="margin-top: 20px; font-size: 1.1em;">
+                        💡 <strong>ההרשמה חינמית לחלוטין</strong> • ללא התחייבות • תוכל להתחיל מיד
+                    </p>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="faq-section">
+                <h2>❓ שאלות נפוצות</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">האם אני צריך ידע מוקדם בתכנות?</div>
+                    <div class="faq-answer">
+                        לא! המדריך הזה מיועד בדיוק למי שאין לו רקע בתכנות. אנחנו מלמדים אתכם **להשתמש** בקוד, לא לכתוב אותו מאפס. זה כמו ללמוד לנהוג - אתם לא צריכים להבין איך המנוע עובד כדי להגיע ליעד.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">כמה זמן לוקח ללמוד Python?</div>
+                    <div class="faq-answer">
+                        זה תלוי במטרה. **לדעת להריץ קוד ולתקן שגיאות בסיסיות** - שבוע אחד. **לדעת לבקש מ-AI קוד מורכב ולהבין אותו** - חודש. **להיות בטוחים בעבודה עם Python בצורה עצמאית** - 3 חודשים. אבל כבר אחרי יום אחד תוכלו להריץ סקריפטים פשוטים!
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">האם Python בחינם?</div>
+                    <div class="faq-answer">
+                        כן! Python הוא קוד פתוח (Open Source) לגמרי. גם VS Code חינמי. גם כל הספריות שהזכרנו. אין עלויות רישוי, אין מנויים. זה אחד היתרונות הגדולים של Python על תוכנות מסחריות.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">מה ההבדל בין Python ל-MATLAB?</div>
+                    <div class="faq-answer">
+                        MATLAB מעולה לחישובים הנדסיים ומשומש הרבה באקדמיה, אבל הוא יקר ומוגבל. Python בחינם, עם קהילה ענקית, וספריות כמו NumPy ו-SciPy עושות כמעט כל מה ש-MATLAB עושה. בתעשייה, Python הרבה יותר נפוץ.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">האם אוכל להשתמש ב-Python בעבודה?</div>
+                    <div class="faq-answer">
+                        בהחלט! Python משומש במפעלים לאוטומציה, בחברות הנדסה לניתוח נתונים, במעבדות לעיבוד מדידות, ובמשרדי תכנון לחישובים מורכבים. הרבה מערכות ERP ו-MES תומכות ב-Python. זה כבר לא "כלי למתכנתים" - זה כלי סטנדרטי בתעשייה.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">מה עושים כשנתקעים?</div>
+                    <div class="faq-answer">
+                        1. **קראו את הודעת השגיאה** - לרוב היא מסבירה מה הבעיה
+                        <br>2. **העתיקו לגוגל** - 99% מהשגיאות כבר נפתרו ב-Stack Overflow
+                        <br>3. **שאלו את ה-AI** - העתיקו את השגיאה והקוד ל-ChatGPT/Claude
+                        <br>4. **פרקו לחלקים** - הריצו את הקוד שורה שורה כדי לזהות היכן זה נשבר
+                        <br>5. **קהילה** - פורומים ישראליים וקבוצות פייסבוק בעברית
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h3>🎓 LearningHub</h3>
+            <p>פורטל הלמידה והחדשנות המוביל בישראל</p>
+            <p>כלים דיגיטליים, בינה מלאכותית ואוטומציה לכל מקצוע ותחום</p>
+            
+            <div class="footer-links">
+                <a href="https://edu-manage.org/">כניסה לפורטל</a>
+                <a href="https://edu-manage.org/JoinCourse?org=69391901350762829f9a50b1">הצטרפות לקורס</a>
+                <a href="#">תמיכה טכנית</a>
+            </div>
+            
+            <p style="margin-top: 30px; opacity: 0.8;">
+                © 2025 EduManage • מערכת לניהול פדגוגי
+                <br>פותח ע"י BD TechAcademy • ביצוע ב-BDNHOST
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

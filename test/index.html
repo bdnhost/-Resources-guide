@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- SEO Meta Tags -->
+    <title>פורטל הלמידה והחדשנות | כלים דיגיטליים, בינה מלאכותית ואוטומציה</title>
+    <meta name="description" content="פורטל הלמידה והחדשנות המוביל בישראל - למדו Python, AI, ניתוח נתונים, אוטומציה ועוד. 26 מדריכים מקצועיים בעברית לשיפור הפרודוקטיביות והקריירה">
+    <meta name="keywords" content="Python, בינה מלאכותית, AI, ChatGPT, ניתוח נתונים, אוטומציה, פיתון, למידה דיגיטלית, קורסים בעברית">
+    <meta name="author" content="יעקב בידני">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bdnhost.net/Resources/index.html">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="פורטל הלמידה והחדשנות | כלים דיגיטליים ובינה מלאכותית">
+    <meta property="og:description" content="26 מדריכים מקצועיים בעברית ללימוד Python, AI, ניתוח נתונים ואוטומציה. תוכן איכותי בחינם לשיפור הקריירה">
+    <meta property="og:url" content="https://bdnhost.net/Resources/index.html">
+    <meta property="og:site_name" content="LearningHub">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="פורטל הלמידה והחדשנות">
+    <meta name="twitter:description" content="26 מדריכים מקצועיים בעברית ללימוד Python, AI ועוד">
+    
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "LearningHub - פורטל הלמידה והחדשנות",
+        "description": "פורטל למידה דיגיטלית המתמחה בבינה מלאכותית, אוטומציה וכלים טכנולוגיים",
+        "url": "https://bdnhost.net/Resources/",
+        "founder": {
+            "@type": "Person",
+            "name": "יעקב בידני"
+        },
+        "educationalCredentialAwarded": "תעודה דיגיטלית"
+    }
+    </script>
+    
+    <!-- Structured Data - WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "LearningHub",
+        "url": "https://bdnhost.net/Resources/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://bdnhost.net/Resources/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #3b82f6;
+            --secondary-color: #10b981;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Heebo', 'Assistant', 'Rubik', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+        h4 { font-size: 1.25rem; }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            background-size: 50px 50px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            display: block;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Section */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--bg-tertiary);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: var(--bg-tertiary);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .quick-link-card {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            transition: var(--transition);
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quick-link-card h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+
+        .quick-link-card p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to Main Content -->
+    <a href="#main-content" class="sr-only">דלג לתוכן הראשי</a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo" aria-label="חזרה לעמוד הבית">
+                    <img src="https://bdnhost.net/edumanage/edumanageLOGO.png" alt="Logo" style="height: 40px; width: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                    <span style="display:none;">🎓</span>
+                    <span>LearningHub</span>
+                </a>
+                <nav aria-label="ניווט ראשי">
+                    <ul>
+                        <li><a href="index.html">ראשי</a></li>
+                        <li><a href="categories.html">קטגוריות</a></li>
+                        <li><a href="sitemap.html">מפת אתר</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>פורטל הלמידה והחדשנות</h1>
+                    <p>כלים דיגיטליים, בינה מלאכותית ואוטומציה לשיפור הפרודוקטיביות והקריירה שלך</p>
+                    <div class="btn-group">
+                        <a href="#courses" class="btn btn-primary">התחל ללמוד</a>
+                        <a href="categories.html" class="btn btn-secondary">כל הנושאים</a>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <span class="stat-number">26</span>
+                            <span class="stat-label">מדריכים מקצועיים</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">תחומי התמחות</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">תוכן בעברית</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">אפשרויות ללמידה</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Courses -->
+        <section id="courses">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">מסלולי הליבה</span>
+                    <h2 class="section-title">המדריכים הפופולריים ביותר</h2>
+                    <p class="section-description">נבחרו במיוחד עבורך - התחל את המסע שלך עם הכלים החשובים ביותר</p>
+                </div>
+                <div class="cards-grid">
+                    <a href="python_guide.html" class="card">
+                        <div class="card-icon">🐍</div>
+                        <h3 class="card-title">Python Automation</h3>
+                        <p class="card-description">אוטומציה וייעול תהליכים. למדו איך לתת למחשב לעבוד בשבילכם בכל משימה.</p>
+                        <span class="card-badge">PRODUCTIVITY</span>
+                    </a>
+                    <a href="chatgpt_guide.html" class="card">
+                        <div class="card-icon">🤖</div>
+                        <h3 class="card-title">AI & Prompt Engineering</h3>
+                        <p class="card-description">שימוש ב-ChatGPT וכלי AI לכתיבה, יצירה ופתרון בעיות יומיות.</p>
+                        <span class="card-badge">SMART TOOLS</span>
+                    </a>
+                    <a href="data_analysis_guide.html" class="card">
+                        <div class="card-icon">📊</div>
+                        <h3 class="card-title">Data Analysis</h3>
+                        <p class="card-description">הפקת תובנות עסקיות ומחקריות מנתונים באמצעות Pandas וכלים ויזואליים.</p>
+                        <span class="card-badge">DATA</span>
+                    </a>
+                    <a href="github_guide.html" class="card">
+                        <div class="card-icon">🐙</div>
+                        <h3 class="card-title">Git & Version Control</h3>
+                        <p class="card-description">ניהול גרסאות, עבודה בצוותים ופרוייקטים בקוד פתוח.</p>
+                        <span class="card-badge">DEVOPS</span>
+                    </a>
+                    <a href="iot_guide.html" class="card">
+                        <div class="card-icon">📡</div>
+                        <h3 class="card-title">IoT & Smart Tech</h3>
+                        <p class="card-description">הבנת הטכנולוגיה החכמה סביבנו ואיך לנצל אותה לבית ולעסק.</p>
+                        <span class="card-badge">TECH</span>
+                    </a>
+                    <a href="terminal_guide.html" class="card">
+                        <div class="card-icon">💻</div>
+                        <h3 class="card-title">Terminal & CLIs</h3>
+                        <p class="card-description">שליטה מלאה במערכת ההפעלה דרך שורת הפקודה.</p>
+                        <span class="card-badge">SYSTEM</span>
+                    </a>
+                    <a href="short-video-marketing-strategy.html" class="card">
+                        <div class="card-icon">🎬</div>
+                        <h3 class="card-title">שיווק בווידאו קצר</h3>
+                        <p class="card-description">אסטרטגיות ויישום ל-Reels ו-TikTok כדי להגדיל חשיפה ומעורבות.</p>
+                        <span class="card-badge">עודכן: 2025-12-15</span>
+                    </a>
+                    <a href="prompts.html" class="card">
+                        <div class="card-icon">💬</div>
+                        <h3 class="card-title">ספריית פרומפטים</h3>
+                        <p class="card-description">מאגר תבניות מוכנות לעבודה יעילה עם ChatGPT ו-Midjourney.</p>
+                        <span class="card-badge">TEMPLATES</span>
+                    </a>
+                    <a href="canva_guide.html" class="card">
+                        <div class="card-icon">🎨</div>
+                        <h3 class="card-title">עיצוב ויזואלי</h3>
+                        <p class="card-description">עקרונות עיצוב ומדריכים ליצירת מצגות ומסמכים מקצועיים.</p>
+                        <span class="card-badge">DESIGN</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access -->
+        <section style="background: var(--bg-secondary);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">גישה מהירה</span>
+                    <h2 class="section-title">מצא את הנתיב המתאים לך</h2>
+                </div>
+                <div class="quick-links">
+                    <a href="ai_basics.html" class="quick-link-card">
+                        <h3>🎯 מתחילים?</h3>
+                        <p>מומלץ להתחיל עם יסודות ה-AI ואז לעבור למדריך ChatGPT המקיף שלנו.</p>
+                    </a>
+                    <a href="python_guide.html" class="quick-link-card">
+                        <h3>🚀 מתקדמים?</h3>
+                        <p>קפצו ישר ל-Python או ניתוח נתונים לכלים מתקדמים ויכולות אוטומציה.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section>
+            <div class="container">
+                <div class="cta-section">
+                    <h2>מוכנים להתחיל?</h2>
+                    <p style="max-width: 600px; margin: 0 auto 2rem;">הצטרפו לאלפי לומדים שכבר משפרים את הקריירה שלהם עם הכלים והמדריכים שלנו</p>
+                    <a href="categories.html" class="btn btn-primary">התחל ללמוד עכשיו</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🎓 LearningHub</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7);">פורטל הלמידה והחדשנות המוביל בישראל. כלים דיגיטליים, בינה מלאכותית ואוטומציה לכל מקצוע ותחום.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>למידה</h4>
+                    <ul>
+                        <li><a href="categories.html">כל הקטגוריות</a></li>
+                        <li><a href="python_guide.html">Python</a></li>
+                        <li><a href="chatgpt_guide.html">ChatGPT</a></li>
+                        <li><a href="data_analysis_guide.html">ניתוח נתונים</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>משאבים</h4>
+                    <ul>
+                        <li><a href="sitemap.html">מפת האתר</a></li>
+                        <li><a href="prompts.html">ספריית פרומפטים</a></li>
+                        <li><a href="ai_ethics.html">אתיקה ב-AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>קשר</h4>
+                    <ul>
+                        <li><a href="#about">אודות</a></li>
+                        <li><a href="#contact">צור קשר</a></li>
+                        <li><a href="#support">תמיכה</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#linkedin" aria-label="LinkedIn" title="LinkedIn">💼</a>
+                    <a href="#github" aria-label="GitHub" title="GitHub">🐙</a>
+                    <a href="#youtube" aria-label="YouTube" title="YouTube">📺</a>
+                </div>
+                <p style="margin-top: 1rem;">© 2025 פורטל הלמידה והחדשנות | נבנה ע"י יעקב בידני</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

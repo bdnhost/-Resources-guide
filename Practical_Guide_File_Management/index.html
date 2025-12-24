@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8"><title>המדריך המעשי לשימוש ניהול ועריכה בקבצים במחשב</title>
+    <style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap');
+    :root {
+        --theme-primary: #4f46e5;
+        --theme-accent: #818cf8;
+        --surface: #ffffff;
+        --text-main: #1a202c;
+        --text-muted: #718096;
+        --border-color: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; font-family: 'Heebo', sans-serif; background: #f7fafc;
+        color: var(--text-main); line-height: 1.6; direction: rtl;
+    }
+    .lms-banner { background: #10b981; color: white; padding: 0.5rem; font-size: 0.85rem; text-align: center; }
+    .lms-btn { background: white; color: #10b981; padding: 2px 10px; border-radius: 20px; text-decoration: none; font-weight: bold; margin-right: 10px; }
+    .global-header { background: white; border-bottom: 1px solid var(--border-color); padding: 1rem; }
+    .global-nav { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { font-weight: 900; text-decoration: none; color: black; font-size: 1.2rem; }
+    .nav-links { display: flex; gap: 1rem; }
+    .nav-link { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; }
+    
+    .audio-player-widget {
+        position: fixed; bottom: 20px; left: 20px; z-index: 100;
+        background: white; padding: 10px 20px; border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px;
+        border: 2px solid var(--theme-primary);
+    }
+    .audio-btn { background: var(--theme-primary); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; }
+
+    .form-section { background: #fff; border: 1px solid #edf2f7; padding: 30px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 1rem; color: #2d3748; }
+    .field input[type="text"], .field textarea {
+        width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 12px; outline: none; transition: all 0.2s; font-family: inherit;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--theme-primary); }
+    .required { color: #e53e3e; margin-right: 4px; }
+    .btn-submit { background: var(--theme-primary); color: white; border: none; padding: 18px 40px; border-radius: 50px; cursor: pointer; font-weight: 900; font-size: 1.2rem; width: 100%; transition: all 0.3s; }
+    .btn-submit:hover { background: #000; transform: translateY(-2px); }
+    .btn-submit:disabled { background: #cbd5e0; cursor: not-allowed; transform: none; }
+
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        .item-card { background: white; display: flex; gap: 20px; padding: 20px; border-radius: 15px; text-decoration: none; color: inherit; margin-bottom: 15px; border: 1px solid #eee; transition: 0.2s; }
+        .item-card:hover { transform: translateY(-3px); border-color: #4f46e5; }
+        .num { background: #4f46e5; color: white; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+        .info h3 { margin: 0 0 5px 0; font-size: 1.2rem; }
+        .info p { margin: 0; color: #666; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    
+    <div class="lms-banner">
+        <div class="lms-banner-content">
+            <span class="lms-text">🎓 <strong>רוצה להעמיק?</strong> בקר באתר המרכזי</span>
+            <a href="https://edu-manage.org/" class="lms-btn">LearningHub</a>
+        </div>
+    </div>
+
+    
+    <header class="global-header">
+        <nav class="global-nav">
+            <div class="nav-links">
+                <a href="https://edu-manage.org" class="nav-link">פורטל ראשי</a>
+                <a href="#" class="nav-link">תוכן המדריך</a>
+            </div>
+            <a href="index.html" class="nav-brand">
+                <span class="logo">🎓</span> LearningHub
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>תוכן המדריך: המדריך המעשי לשימוש ניהול ועריכה בקבצים במחשב</h1>
+        <div class="list">
+    <a href="lesson-1.html" class="item-card">
+        <div class="num">1</div>
+        <div class="info">
+            <h3>שם הפרק: Foundations of File Systems</h3>
+            <p><strong>תיאור:</strong> Operating Systems and Storage</p>
+        </div>
+    </a>
+  
+    <a href="lesson-2.html" class="item-card">
+        <div class="num">2</div>
+        <div class="info">
+            <h3>שם הפרק: Efficient Folder Management</h3>
+            <p><strong>תיאור:</strong> Organization and Navigation</p>
+        </div>
+    </a>
+  
+    <a href="lesson-3.html" class="item-card">
+        <div class="num">3</div>
+        <div class="info">
+            <h3>שם הפרק: File Formats and Extensions</h3>
+            <p><strong>תיאור:</strong> Types and Compatibility</p>
+        </div>
+    </a>
+  
+    <a href="lesson-4.html" class="item-card">
+        <div class="num">4</div>
+        <div class="info">
+            <h3>שם הפרק: Editing and Modification</h3>
+            <p><strong>תיאור:</strong> Content Manipulation</p>
+        </div>
+    </a>
+  
+    <a href="lesson-5.html" class="item-card">
+        <div class="num">5</div>
+        <div class="info">
+            <h3>שם הפרק: Security and Cloud Integration</h3>
+            <p><strong>תיאור:</strong> Protection and Syncing</p>
+        </div>
+    </a>
+  </div>
+    </div>
+    
+    <footer class="global-footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3>🎓 LearningHub</h3>
+                    <p>פורטל הלמידה והחדשנות המוביל בישראל.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 EduManage • כל הזכויות שמורות</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

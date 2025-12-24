@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>המדריך למתחילים  ל HTML + CSS +JS לייצרת דפי אינטרנט - תוכן המדריך | EduManage</title>
+    <style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap');
+
+    :root {
+        --theme-primary: #4f46e5;
+        --theme-accent: #818cf8;
+        --theme-light: #f8faff;
+        --surface: #ffffff;
+        --text-main: #1a202c;
+        --text-muted: #718096;
+        --border-color: #e2e8f0;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --border-radius-main: 24px;
+        --border-radius-small: 12px;
+    }
+
+    /* Global Reset & Typography */
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font-family: 'Heebo', sans-serif;
+        background: #f0f4f8;
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.6;
+    }
+
+    /* Banner */
+    .lms-banner {
+        background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 0.6rem 0;
+        font-size: 0.9rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-md);
+    }
+    .lms-banner-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+    }
+    .lms-btn {
+        background: white;
+        color: #059669;
+        padding: 0.25rem 0.75rem;
+        border-radius: 99px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.8rem;
+        transition: transform 0.2s;
+    }
+    .lms-btn:hover { transform: scale(1.05); }
+
+    /* Header Styles */
+    .global-header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.8rem 0;
+    }
+
+    .global-nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-brand {
+        font-size: 1.4rem;
+        font-weight: 900;
+        text-decoration: none;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--theme-primary); }
+
+    /* Breadcrumbs */
+    .breadcrumbs {
+        background: white;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.8rem 0;
+        margin-bottom: 2rem;
+    }
+    .breadcrumbs-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    /* Concept Card Style (Used in Index) */
+    .concept-card {
+        background: white;
+        padding: 2rem;
+        border-radius: var(--border-radius-small);
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        display: block;
+        color: inherit;
+        position: relative;
+        overflow: hidden;
+    }
+    .concept-card::before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0;
+        width: 6px;
+        background: var(--theme-primary);
+        opacity: 0.8;
+    }
+    .concept-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--theme-primary);
+    }
+    
+    /* Narration Player Widget */
+    .audio-player-widget {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        background: white;
+        border-radius: 50px;
+        box-shadow: var(--shadow-lg);
+        display: flex;
+        align-items: center;
+        padding: 5px 15px;
+        border: 1px solid var(--border-color);
+        gap: 10px;
+        transition: all 0.3s;
+    }
+    .audio-player-widget:hover { transform: scale(1.05); border-color: var(--theme-primary); }
+    .audio-btn { 
+        background: var(--theme-primary); color: white; border: none; 
+        width: 32px; height: 32px; border-radius: 50%; cursor: pointer; 
+        display: flex; align-items: center; justify-content: center;
+    }
+    .audio-label { font-size: 0.8rem; font-weight: 700; color: var(--text-main); }
+    
+    @media (max-width: 768px) {
+        .global-nav { flex-direction: column; gap: 1rem; }
+    }
+
+        .hero { background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%); padding: 4rem 2rem; text-align: center; border-bottom: 1px solid var(--border-color); position: relative; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 900; color: #1a202c; }
+        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    
+    <div class="lms-banner">
+        <div class="lms-banner-content">
+            <span class="lms-text">🎓 <strong>רוצה להעמיק?</strong> בקר באתר המרכזי</span>
+            <a href="https://edu-manage.org/" class="lms-btn">LearningHub</a>
+            <span class="lms-divider">|</span>
+            <span class="lms-text">🚀 <strong>חדש כאן?</strong></span>
+            <a href="https://edu-manage.org/JoinCourse?org=69391901350762829f9a50b1" class="lms-btn-outline">הרשם חינם</a>
+        </div>
+    </div>
+
+    
+    <header class="global-header">
+        <nav class="global-nav">
+            <div class="nav-links">
+                <a href="https://edu-manage.org" class="nav-link">פורטל ראשי</a>
+                <a href="#" class="nav-link">תוכן המדריך</a>
+            </div>
+            <a href="index.html" class="nav-brand">
+                <span class="logo">🎓</span>
+                LearningHub
+            </a>
+        </nav>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="breadcrumb">
+        <div class="breadcrumbs-content">
+            <a href="https://edu-manage.org">ראשי</a>
+            <span>/</span>
+            <a href="index.html">מדריך</a>
+            <span>/</span>
+            <span class="current">המדריך למתחילים  ל HTML + CSS +JS לייצרת דפי אינטרנט</span>
+        </div>
+    </nav>
+
+    <div class="hero"><div class="container"><h1>המדריך למתחילים  ל HTML + CSS +JS לייצרת דפי אינטרנט</h1><p>ברוכים הבאים למסלול הלמידה שלכם</p></div></div>
+    <main class="container" style="margin-top: 3rem; margin-bottom: 4rem;">
+        <h2 style="margin-bottom: 2rem;">פרקי המדריך</h2>
+        <div class="lesson-list">
+    <a href="lesson-1.html" class="concept-card">
+        <div style="display: flex; align-items: start; gap: 1.5rem;">
+            <div style="
+                background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
+                color: white;
+                width: 56px; height: 56px;
+                border-radius: 16px;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.5rem; font-weight: 800;
+                flex-shrink: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            ">
+                1
+            </div>
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 700;">מבוא לפיתוח אתרים ו-HTML5</h3>
+                <div style="display: flex; gap: 10px; margin-bottom: 0.8rem;">
+                     <span style="background: var(--theme-light); color: var(--theme-primary); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.05);">
+                        Core Web Structure
+                    </span>
+                </div>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Setting up the professional development environment and mastering semantic HTML5 tags to build a structured foundation for web pages.</p>
+            </div>
+        </div>
+    </a>
+  
+    <a href="lesson-2.html" class="concept-card">
+        <div style="display: flex; align-items: start; gap: 1.5rem;">
+            <div style="
+                background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
+                color: white;
+                width: 56px; height: 56px;
+                border-radius: 16px;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.5rem; font-weight: 800;
+                flex-shrink: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            ">
+                2
+            </div>
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 700;">עיצוב חזותי עם CSS3</h3>
+                <div style="display: flex; gap: 10px; margin-bottom: 0.8rem;">
+                     <span style="background: var(--theme-light); color: var(--theme-primary); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.05);">
+                        Styling and Visual Design
+                    </span>
+                </div>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Deep dive into the CSS box model, typography, color theory, and selectors to create aesthetically pleasing professional layouts.</p>
+            </div>
+        </div>
+    </a>
+  
+    <a href="lesson-3.html" class="concept-card">
+        <div style="display: flex; align-items: start; gap: 1.5rem;">
+            <div style="
+                background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
+                color: white;
+                width: 56px; height: 56px;
+                border-radius: 16px;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.5rem; font-weight: 800;
+                flex-shrink: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            ">
+                3
+            </div>
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 700;">פריסות מתקדמות ועיצוב רספונסיבי</h3>
+                <div style="display: flex; gap: 10px; margin-bottom: 0.8rem;">
+                     <span style="background: var(--theme-light); color: var(--theme-primary); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.05);">
+                        Modern Layouts
+                    </span>
+                </div>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Learning Flexbox, CSS Grid, and Media Queries to ensure web pages adapt seamlessly across mobile, tablet, and desktop devices.</p>
+            </div>
+        </div>
+    </a>
+  
+    <a href="lesson-4.html" class="concept-card">
+        <div style="display: flex; align-items: start; gap: 1.5rem;">
+            <div style="
+                background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
+                color: white;
+                width: 56px; height: 56px;
+                border-radius: 16px;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.5rem; font-weight: 800;
+                flex-shrink: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            ">
+                4
+            </div>
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 700;">יסודות שפת JavaScript</h3>
+                <div style="display: flex; gap: 10px; margin-bottom: 0.8rem;">
+                     <span style="background: var(--theme-light); color: var(--theme-primary); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.05);">
+                        Programming Fundamentals
+                    </span>
+                </div>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Introduction to JavaScript logic, including variables, data types, functions, and control flow to add interactive capabilities to websites.</p>
+            </div>
+        </div>
+    </a>
+  
+    <a href="lesson-5.html" class="concept-card">
+        <div style="display: flex; align-items: start; gap: 1.5rem;">
+            <div style="
+                background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
+                color: white;
+                width: 56px; height: 56px;
+                border-radius: 16px;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.5rem; font-weight: 800;
+                flex-shrink: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            ">
+                5
+            </div>
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 700;">מניפולציה של ה-DOM ופרויקט סיום</h3>
+                <div style="display: flex; gap: 10px; margin-bottom: 0.8rem;">
+                     <span style="background: var(--theme-light); color: var(--theme-primary); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.05);">
+                        Dynamic Interactivity
+                    </span>
+                </div>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Mastering Document Object Model (DOM) manipulation and event handling to create a fully functional, interactive final project.</p>
+            </div>
+        </div>
+    </a>
+  </div>
+    </main>
+    
+    <footer class="global-footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3><span class="brand-icon">🎓</span> LearningHub</h3>
+                    <p class="footer-description">
+                        פורטל הלמידה והחדשנות המוביל בישראל. מדריכים, כלים דיגיטליים ובינה מלאכותית.
+                    </p>
+                    <div style="margin-top: 1rem;">
+                        <a href="https://edu-manage.org/JoinCourse?org=69391901350762829f9a50b1" 
+                           class="btn-pill">
+                            🚀 התחל ללמוד חינם
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>ניווט</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">דף המדריך</a></li>
+                        <li><a href="https://edu-manage.org/" class="footer-link">החשבון שלי</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>EduManage</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://edu-manage.org/" class="footer-link">אודות</a></li>
+                        <li><a href="#" class="footer-link">צור קשר</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <div>© 2025 <a href="https://edu-manage.org/" style="color: inherit; text-decoration: none;">EduManage</a> • כל הזכויות שמורות</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

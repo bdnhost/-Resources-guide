@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול ענן וסדר דיגיטלי</title>
+    <style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap');
+    :root {
+        --theme-primary: #4f46e5;
+        --theme-accent: #818cf8;
+        --surface: #ffffff;
+        --text-main: #1a202c;
+        --text-muted: #718096;
+        --border-color: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; font-family: 'Heebo', sans-serif; background: #f7fafc;
+        color: var(--text-main); line-height: 1.6; direction: rtl;
+    }
+    .lms-banner { background: #4f46e5; color: white; padding: 0.75rem; font-size: 0.9rem; text-align: center; font-weight: 500; position: relative; z-index: 60; }
+    .lms-btn { background: white; color: #4f46e5; padding: 4px 14px; border-radius: 20px; text-decoration: none; font-weight: 800; margin-right: 12px; font-size: 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .global-header { background: white; border-bottom: 1px solid var(--border-color); padding: 1rem; position: sticky; top: 0; z-index: 50; }
+    .global-nav { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { font-weight: 900; text-decoration: none; color: black; font-size: 1.2rem; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-link { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-link:hover { color: var(--theme-primary); }
+    
+    .audio-player-widget {
+        position: fixed; bottom: 20px; left: 20px; z-index: 100;
+        background: white; padding: 12px 24px; border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px;
+        border: 2px solid var(--theme-primary);
+    }
+    .audio-btn { background: var(--theme-primary); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+
+    .container { max-width: 850px; margin: 30px auto; background: white; border-radius: 24px; box-shadow: 0 15px 50px rgba(0,0,0,0.06); overflow: hidden; }
+    .form-section { background: #fff; border: 1px solid #edf2f7; padding: 30px; border-radius: 20px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-weight: 800; margin-bottom: 10px; font-size: 1rem; color: #2d3748; }
+    .field input[type="text"], .field textarea {
+        width: 100%; padding: 16px; border: 2px solid #e2e8f0; border-radius: 14px; outline: none; transition: all 0.2s; font-family: inherit; font-size: 1rem;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--theme-primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+    .required { color: #e53e3e; margin-right: 4px; }
+    
+    .btn-submit { background: var(--theme-primary); color: white; border: none; padding: 20px 40px; border-radius: 50px; cursor: pointer; font-weight: 900; font-size: 1.2rem; width: 100%; transition: all 0.3s; box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2); }
+    .btn-submit:hover { background: #000; transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+    .btn-submit:disabled { background: #cbd5e0; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .nav-buttons-container { display: flex; flex-direction: row; justify-content: space-between; gap: 15px; margin-top: 25px; }
+    .btn-secondary { background: #f1f5f9; color: #475569; border: none; padding: 14px 24px; border-radius: 50px; cursor: pointer; font-weight: 800; text-decoration: none; text-align: center; flex: 1; transition: 0.2s; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; }
+    .btn-secondary:hover { background: #e2e8f0; color: #1e293b; }
+
+    .chapter-hero-img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 24px; margin-bottom: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 4px solid white; }
+    .portal-btn { background: #1e1b4b; color: white; text-decoration: none; padding: 16px 32px; border-radius: 50px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex: 2; transition: 0.3s; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(30, 27, 75, 0.2); }
+    .portal-btn:hover { background: #000; transform: scale(1.03); }
+
+    .resources-footer-btn { 
+        display: block; width: 100%; padding: 20px; background: #fff; border: 2px solid var(--theme-primary); 
+        color: var(--theme-primary); text-decoration: none; text-align: center; font-weight: 900; 
+        border-radius: 18px; margin-top: 30px; transition: 0.3s; 
+    }
+    .resources-footer-btn:hover { background: var(--theme-primary); color: #fff; transform: translateY(-3px); }
+
+    @media (max-width: 640px) {
+        .nav-buttons-container { flex-direction: column; }
+        .container { margin: 0; border-radius: 0; }
+        .audio-player-widget { left: 10px; right: 10px; bottom: 10px; border-radius: 15px; width: auto; justify-content: center; }
+        .hero h1 { font-size: 1.8rem !important; }
+    }
+
+        .container { max-width: 800px; margin: 40px auto; padding: 0; }
+        .index-inner { padding: 40px 20px; }
+        .item-card { background: white; display: flex; align-items: center; gap: 20px; padding: 25px; border-radius: 20px; text-decoration: none; color: inherit; margin-bottom: 20px; border: 1px solid #e2e8f0; transition: 0.3s; }
+        .item-card:hover { transform: translateY(-4px); border-color: #4f46e5; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .num { background: #4f46e5; color: white; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-size: 1.2rem; }
+        .info { flex: 1; }
+        .info h3 { margin: 0 0 5px 0; font-size: 1.3rem; font-weight: 900; color: #1e293b; }
+        .info p { margin: 0; color: #64748b; font-size: 0.95rem; }
+        .arrow { font-size: 1.5rem; color: #cbd5e1; }
+        h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 40px; color: #0f172a; text-align: center; }
+    </style>
+</head>
+<body>
+    
+    <div class="lms-banner">
+        <div class="lms-banner-content">
+            <span class="lms-text">🎓 <strong>מרכז הידע</strong> - למדריכים נוספים בקר בפורטל המשאבים</span>
+            <a href="https://bdnhost.net/Resources/" target="_blank" class="lms-btn">למאגר המדריכים</a>
+        </div>
+    </div>
+
+    
+    <header class="global-header">
+        <nav class="global-nav">
+            <div class="nav-links">
+                <a href="https://bdnhost.net/Resources/" class="nav-link" target="_blank">מאגר המדריכים</a>
+                <a href="#" class="nav-link">תוכן המדריך</a>
+            </div>
+            <a href="index.html" class="nav-brand">
+                <span class="logo">🎓</span> LearningHub
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="index-inner">
+            <h1>תוכן המדריך: <span style="color:#4f46e5">ניהול ענן וסדר דיגיטלי</span></h1>
+            <div class="list">
+    <a href="lesson-1.html" class="item-card">
+        <div class="num">1</div>
+        <div class="info">
+            <h3>פרק 1: Fundamentals of Cloud Ecosystems</h3>
+            <p><strong>נושא:</strong> Introduction to Cloud Computing</p>
+        </div>
+        <div class="arrow">←</div>
+    </a>
+  
+    <a href="lesson-2.html" class="item-card">
+        <div class="num">2</div>
+        <div class="info">
+            <h3>פרק 2: Architecture of Digital Order</h3>
+            <p><strong>נושא:</strong> File Management and Taxonomy</p>
+        </div>
+        <div class="arrow">←</div>
+    </a>
+  
+    <a href="lesson-3.html" class="item-card">
+        <div class="num">3</div>
+        <div class="info">
+            <h3>פרק 3: Security and Access Control</h3>
+            <p><strong>נושא:</strong> Digital Security</p>
+        </div>
+        <div class="arrow">←</div>
+    </a>
+  
+    <a href="lesson-4.html" class="item-card">
+        <div class="num">4</div>
+        <div class="info">
+            <h3>פרק 4: Workflow Automation and Integration</h3>
+            <p><strong>נושא:</strong> Productivity Optimization</p>
+        </div>
+        <div class="arrow">←</div>
+    </a>
+  
+    <a href="lesson-5.html" class="item-card">
+        <div class="num">5</div>
+        <div class="info">
+            <h3>פרק 5: Sustainability and Digital Maintenance</h3>
+            <p><strong>נושא:</strong> Lifecycle Management</p>
+        </div>
+        <div class="arrow">←</div>
+    </a>
+  </div>
+        </div>
+    </div>
+    
+    <footer class="global-footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3>🎓 LearningHub</h3>
+                    <p>פורטל הלמידה והחדשנות המוביל בישראל.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 EduManage • כל הזכויות שמורות</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

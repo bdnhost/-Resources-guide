@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>העסק שעובד בשבילך: בניית אימפריית אוטומציה ללא קוד</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Assistant', sans-serif; background: #f8fafc; color: #0f172a; }
+        .hero-gradient { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .quiz-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .option-btn { transition: all 0.2s ease; }
+        .btn-disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="hero-gradient text-white py-24 px-6 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="inline-block px-4 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-black uppercase tracking-widest mb-6">
+                מדריך למידה אינטראקטיבי
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">העסק שעובד בשבילך: בניית אימפריית אוטומציה ללא קוד</h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">המדריך המקיף להפיכת עסק ידני למכונה משומנת, דיגיטלית ואוטונומית באמצעות כלי No-Code.</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-20 space-y-24">
+        
+        <article class="bg-white rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden">
+            <div class="p-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg uppercase tracking-widest">פרק 1</span>
+                </div>
+                <h2 class="text-4xl font-black mb-6">התעוררות: זיהוי צווארי בקבוק ידניים</h2>
+                <p class="text-xl text-slate-600 font-bold leading-relaxed mb-10">לפני שבונים, צריך להבין מה להרוס. נלמד איך לבצע 'חשבונאות זמן' ולזהות משימות שחייבות לעבור לאוטומציה.</p>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">מטרות למידה</h4>
+                    <div class="text-slate-800 font-bold whitespace-pre-wrap">1. ביצוע אבחון תהליכים (Time Audit)
+2. הבחנה בין משימות בעלות ערך גבוה למשימות רובוטיות</div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="bg-white rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden">
+            <div class="p-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg uppercase tracking-widest">פרק 2</span>
+                </div>
+                <h2 class="text-4xl font-black mb-6">הארכיטקט: הכרת ארגז הכלים (Zapier & Make)</h2>
+                <p class="text-xl text-slate-600 font-bold leading-relaxed mb-10">היכרות עם הפלטפורמות המובילות שמחברות בין האפליקציות שלכם ללא שורת קוד אחת.</p>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">מטרות למידה</h4>
+                    <div class="text-slate-800 font-bold whitespace-pre-wrap">1. הבנת ההבדל בין Make ל-Zapier
+2. מושגי יסוד: Scenario, Zap, Operation</div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="bg-white rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden">
+            <div class="p-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg uppercase tracking-widest">פרק 3</span>
+                </div>
+                <h2 class="text-4xl font-black mb-6">השפה: טריגרים ופעולות (Triggers & Actions)</h2>
+                <p class="text-xl text-slate-600 font-bold leading-relaxed mb-10">הלב של כל אוטומציה: 'אם זה קרה, אז תעשה את זה'. פיצוח הלוגיקה הבסיסית.</p>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">מטרות למידה</h4>
+                    <div class="text-slate-800 font-bold whitespace-pre-wrap">1. הגדרת טריגר (הדק) מדויק
+2. שרשור פעולות עוקבות (Actions)</div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="bg-white rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden">
+            <div class="p-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg uppercase tracking-widest">פרק 4</span>
+                </div>
+                <h2 class="text-4xl font-black mb-6">המוח: סינון, ניתוב ולוגיקה מתקדמת</h2>
+                <p class="text-xl text-slate-600 font-bold leading-relaxed mb-10">איך לגרום לאוטומציה לקבל החלטות חכמות באמצעות Routers ו-Filters.</p>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">מטרות למידה</h4>
+                    <div class="text-slate-800 font-bold whitespace-pre-wrap">1. שימוש בפילטרים למניעת רעש
+2. שימוש ב-Routers לפיצול תהליכים</div>
+                </div>
+            </div>
+        </article>
+        
+        <article class="bg-white rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden">
+            <div class="p-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg uppercase tracking-widest">פרק 5</span>
+                </div>
+                <h2 class="text-4xl font-black mb-6">הטייס: בקרת איכות וטיפול בשגיאות</h2>
+                <p class="text-xl text-slate-600 font-bold leading-relaxed mb-10">מה קורה כשמשהו משתבש? בניית מנגנוני הגנה והתראות כדי לישון בשקט בלילה.</p>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">מטרות למידה</h4>
+                    <div class="text-slate-800 font-bold whitespace-pre-wrap">1. הגדרת Error Handlers
+2. בניית דשבורד בקרה וניטור</div>
+                </div>
+            </div>
+        </article>
+        
+
+        <section id="quiz" class="bg-slate-900 rounded-[4rem] p-8 md:p-20 text-white shadow-2xl relative">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black mb-4">מבחן הסמכה סופי</h2>
+                <p class="text-slate-400 text-xl font-medium">יש להזדהות לפני שליחת המבחן</p>
+            </div>
+
+            <div id="quiz-form">
+                <div class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 mb-16">
+                   <label class="block text-xs font-black uppercase mb-4 text-blue-300 tracking-widest">מזהה תלמיד EDUMANAGE (חובה)</label>
+                   <input 
+                    type="text" id="student-id" required
+                    oninput="validateForm()"
+                    placeholder="הכנס מזהה (למשל STU-555)"
+                    class="w-full bg-transparent border-b-2 border-white/20 px-4 py-3 text-3xl font-black outline-none focus:border-blue-500 transition-all placeholder:text-white/10"
+                   />
+                </div>
+
+                <div id="quiz-container" class="space-y-10">
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="האירוע שגורם לתהליך האוטומציה להתחיל לרוץ" data-id="q1">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">1</span>
+                            <h4 class="text-2xl font-black leading-tight">מהו 'טריגר' (Trigger) בהקשר של אוטומציה עסקית?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q1', 'הפעולה הסופית שהמערכת מבצעת', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                הפעולה הסופית שהמערכת מבצעת
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q1', 'האירוע שגורם לתהליך האוטומציה להתחיל לרוץ', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                האירוע שגורם לתהליך האוטומציה להתחיל לרוץ
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q1', 'התוכנה שמחברת בין האפליקציות', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                התוכנה שמחברת בין האפליקציות
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q1', 'שגיאה שמופיעה ביומן הריצה', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                שגיאה שמופיעה ביומן הריצה
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="Make (לשעבר Integromat)" data-id="q2">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">2</span>
+                            <h4 class="text-2xl font-black leading-tight">איזה מהכלים הבאים משמש בעיקר לבניית אוטומציות (iPaaS)?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q2', 'Adobe Photoshop', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Adobe Photoshop
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q2', 'Make (לשעבר Integromat)', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Make (לשעבר Integromat)
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q2', 'Zoom', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Zoom
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q2', 'Spotify', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Spotify
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="לפצל את התהליך למספר נתיבים שונים על בסיס תנאים" data-id="q3">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">3</span>
+                            <h4 class="text-2xl font-black leading-tight">מה תפקידו של ה-'Router' בתרחיש אוטומציה?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q3', 'למחוק נתונים כפולים', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                למחוק נתונים כפולים
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q3', 'לשלוח את כל הנתונים למקום אחד בלבד', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                לשלוח את כל הנתונים למקום אחד בלבד
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q3', 'לפצל את התהליך למספר נתיבים שונים על בסיס תנאים', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                לפצל את התהליך למספר נתיבים שונים על בסיס תנאים
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q3', 'לעצור את האוטומציה באופן מיידי', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                לעצור את האוטומציה באופן מיידי
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="Trigger: Google Forms -> Action: Gmail" data-id="q4">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">4</span>
+                            <h4 class="text-2xl font-black leading-tight">לקוח מילא טופס צור קשר (Google Forms). אתה רוצה לשלוח לו מיד מייל תודה (Gmail). מהו סדר הפעולות הנכון?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q4', 'Action: Gmail -> Trigger: Google Forms', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Action: Gmail -> Trigger: Google Forms
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q4', 'Trigger: Gmail -> Action: Google Forms', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Trigger: Gmail -> Action: Google Forms
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q4', 'Trigger: Google Forms -> Action: Gmail', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Trigger: Google Forms -> Action: Gmail
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q4', 'Trigger: Google Forms -> Trigger: Gmail', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Trigger: Google Forms -> Trigger: Gmail
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="Filter (מסנן)" data-id="q5">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">5</span>
+                            <h4 class="text-2xl font-black leading-tight">אתה מקבל הרבה פניות ספאם מהאתר. איזה רכיב תוסיף לאוטומציה כדי למנוע יצירת איש קשר ב-CRM עבור כתובות המכילות 'test'?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q5', 'Delay (השהייה)', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Delay (השהייה)
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q5', 'Filter (מסנן)', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Filter (מסנן)
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q5', 'Iterator (מפרק)', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Iterator (מפרק)
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q5', 'Aggregator (אוסף)', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Aggregator (אוסף)
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="להוסיף מנגנון Error Handler ששומר את המידע בקובץ גיבוי לטיפול ידני" data-id="q6">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">6</span>
+                            <h4 class="text-2xl font-black leading-tight">האוטומציה נכשלה כי שירות המיילים נפל זמנית. מהו הפתרון הטוב ביותר להבטיח שהמידע לא יאבד?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q6', 'למחוק את האוטומציה ולבנות חדשה', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                למחוק את האוטומציה ולבנות חדשה
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q6', 'להוסיף מנגנון Error Handler ששומר את המידע בקובץ גיבוי לטיפול ידני', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                להוסיף מנגנון Error Handler ששומר את המידע בקובץ גיבוי לטיפול ידני
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q6', 'להתעלם מהשגיאה ולקוות לטוב', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                להתעלם מהשגיאה ולקוות לטוב
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q6', 'להגדיר שהאוטומציה תרוץ רק בלילה', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                להגדיר שהאוטומציה תרוץ רק בלילה
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="Delay / Sleep" data-id="q7">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">7</span>
+                            <h4 class="text-2xl font-black leading-tight">אתה רוצה לשלוח הודעת וואטסאפ ללקוח בדיוק 24 שעות אחרי שהוא נרשם. באיזה רכיב תשתמש?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q7', 'Router', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Router
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q7', 'Delay / Sleep', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Delay / Sleep
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q7', 'Formatter', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Formatter
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q7', 'HTTP Request', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                HTTP Request
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="יצרת מעגל סגור: העדכון עצמו נחשב כ'שינוי' שמפעיל מחדש את הטריגר" data-id="q8">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">8</span>
+                            <h4 class="text-2xl font-black leading-tight">בנית אוטומציה שמעדכנת שורה ב-Google Sheets בכל פעם שיש שינוי באותה שורה. האוטומציה נכנסה ללופ אינסופי וקרסה. מה הסיבה הסבירה ביותר?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q8', 'האינטרנט היה איטי', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                האינטרנט היה איטי
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q8', 'יצרת מעגל סגור: העדכון עצמו נחשב כ'שינוי' שמפעיל מחדש את הטריגר', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                יצרת מעגל סגור: העדכון עצמו נחשב כ'שינוי' שמפעיל מחדש את הטריגר
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q8', 'Google Sheets לא תומך באוטומציה', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Google Sheets לא תומך באוטומציה
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q8', 'השתמשת בצבע לא נכון בתאים', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                השתמשת בצבע לא נכון בתאים
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="להעביר את הפילטר להיות השלב הראשון מיד אחרי הטריגר" data-id="q9">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">9</span>
+                            <h4 class="text-2xl font-black leading-tight">יש לך תהליך שרץ 10,000 פעמים בחודש, אבל ב-90% מהמקרים הוא לא רלוונטי ונחסם על ידי פילטר בשלב מאוחר. כיצד תייעל את צריכת ה'Operations' (עלויות)?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q9', 'להעביר את הפילטר להיות השלב הראשון מיד אחרי הטריגר', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                להעביר את הפילטר להיות השלב הראשון מיד אחרי הטריגר
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q9', 'לקנות חבילה יקרה יותר', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                לקנות חבילה יקרה יותר
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q9', 'למחוק את הפילטר לגמרי', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                למחוק את הפילטר לגמרי
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q9', 'להריץ את האוטומציה ידנית', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                להריץ את האוטומציה ידנית
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-card bg-white/5 p-8 md:p-12 rounded-[3rem] border border-white/10" data-correct="HTTP / Webhook Module" data-id="q10">
+                        <div class="flex items-start gap-4 mb-8">
+                            <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-sm shrink-0">10</span>
+                            <h4 class="text-2xl font-black leading-tight">עסק רוצה לחבר מערכת CRM ישנה מאוד שאין לה אפליקציה מובנית ב-Make/Zapier, אך יש לה API פתוח. באיזה מודול יש להשתמש?</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            
+                            <button type="button" onclick="selectOption('q10', 'Gmail Module', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Gmail Module
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q10', 'Excel Module', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Excel Module
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q10', 'HTTP / Webhook Module', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                HTTP / Webhook Module
+                            </button>
+                            
+                            <button type="button" onclick="selectOption('q10', 'Social Media Module', this)" class="option-btn p-6 rounded-2xl text-right font-bold transition-all border-2 border-white/10 hover:bg-white/10 text-lg">
+                                Social Media Module
+                            </button>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="mt-20 text-center">
+                    <button onclick="submitResults()" id="submit-btn" disabled class="btn-disabled w-full bg-blue-600 text-white py-8 rounded-[2.5rem] font-black text-2xl hover:bg-blue-700 transition shadow-2xl shadow-blue-500/20">
+                        הזן מזהה תלמיד להמשך...
+                    </button>
+                    
+                    <div id="status-message" class="hidden mt-6 text-xl font-bold animate-pulse text-blue-400"></div>
+
+                    <div id="results" class="hidden mt-10 p-16 bg-white/10 rounded-[3rem] animate-in zoom-in duration-500">
+                        <div class="text-7xl mb-6">🏆</div>
+                        <h3 class="text-5xl font-black mb-2" id="score-text"></h3>
+                        <p class="text-slate-300 text-xl font-bold mb-8" id="feedback-text"></p>
+                        <div id="portal-link" class="hidden">
+                           <a href="#" id="dynamic-link" target="_blank" class="bg-white text-slate-900 px-10 py-5 rounded-3xl font-black text-lg inline-block hover:scale-105 transition">לפורטל הלימודים שלך ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-20 text-center opacity-30 font-black text-xs uppercase tracking-[0.5em]">
+        Generated by OmniGuide AI Factory &copy; 2025
+    </footer>
+
+    <script>
+        const answers = {};
+        const totalQuestions = 10;
+        const courseName = "העסק שעובד בשבילך: בניית אימפריית אוטומציה ללא קוד";
+        const courseCode = "AUTO-101";
+        const API_URL = "https://edu-manage.org/api/functions/submitGuideForm";
+
+        function validateForm() {
+            const studentId = document.getElementById('student-id').value.trim();
+            const submitBtn = document.getElementById('submit-btn');
+            const answeredCount = Object.keys(answers).length;
+            
+            if (studentId.length >= 3 && answeredCount === totalQuestions) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('btn-disabled');
+                submitBtn.innerText = "שלח מבחן וקבל ציון ✅";
+            } else if (studentId.length < 3) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('btn-disabled');
+                submitBtn.innerText = "הזן מזהה תלמיד (לפחות 3 תווים)";
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('btn-disabled');
+                submitBtn.innerText = "ענה על כל השאלות (" + answeredCount + "/" + totalQuestions + ")";
+            }
+        }
+
+        function selectOption(qId, option, btn) {
+            answers[qId] = option;
+            const parent = btn.closest('.quiz-card');
+            parent.querySelectorAll('.option-btn').forEach(b => {
+                b.classList.remove('bg-blue-600', 'border-blue-600', 'text-white');
+                b.classList.add('border-white/10');
+            });
+            btn.classList.add('bg-blue-600', 'border-blue-600', 'text-white');
+            btn.classList.remove('border-white/10');
+            validateForm();
+        }
+
+        async function submitResults() {
+            const studentId = document.getElementById('student-id').value.trim();
+            const statusMsg = document.getElementById('status-message');
+            const submitBtn = document.getElementById('submit-btn');
+
+            submitBtn.disabled = true;
+            submitBtn.classList.add('btn-disabled');
+            submitBtn.innerText = "שולח נתונים ל-EduManage...";
+            statusMsg.classList.remove('hidden');
+            statusMsg.innerText = "מסנכרן נתונים...";
+
+            let score = 0;
+            document.querySelectorAll('.quiz-card').forEach(card => {
+                const qId = card.getAttribute('data-id');
+                const correct = card.getAttribute('data-correct');
+                if (answers[qId] === correct) {
+                    score += (100 / totalQuestions);
+                }
+            });
+
+            const payload = {
+                student_id: studentId,
+                guide_name: courseName,
+                guide_chapter: 'סיכום המדריך',
+                guide_section: 'מבחן אמריקאי סופי',
+                guide_task: 'הגשת תשובות למבחן (מיוצא)',
+                page_url: window.location.href,
+                form_data: {
+                    course_code: courseCode,
+                    score: Math.round(score),
+                    answers: answers,
+                    submitted_at: new Date().toISOString(),
+                    is_exported: true
+                }
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showSuccess(studentId, Math.round(score));
+                } else {
+                    throw new Error(result.error || 'תקלה בשרת');
+                }
+            } catch (err) {
+                alert('שגיאה בשליחת הנתונים: ' + err.message);
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('btn-disabled');
+                submitBtn.innerText = "נסה לשלוח שוב";
+                statusMsg.innerText = "שליחה נכשלה";
+            }
+        }
+
+        function showSuccess(studentId, score) {
+            document.getElementById('quiz-form').innerHTML = ""; 
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.classList.remove('hidden');
+            document.getElementById('score-text').innerText = 'הציון שלך: ' + score;
+            document.getElementById('feedback-text').innerText = score >= 80 ? 'מצוין! ההסמכה עברה בהצלחה.' : 'המבחן הושלם והציון סונכרן.';
+            
+            const portalLink = document.getElementById('portal-link');
+            const dynamicLink = document.getElementById('dynamic-link');
+            dynamicLink.href = "https://edu-manage.org/PublicView?type=student&id=" + encodeURIComponent(studentId);
+            portalLink.classList.remove('hidden');
+            window.scrollTo({ top: document.getElementById('quiz').offsetTop, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

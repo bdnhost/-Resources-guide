@@ -1,0 +1,28 @@
+{
+    "name": "LearningHub - פורטל הלמידה והחדשנות",
+    "short_name": "LearningHub",
+    "description": "פורטל למידה דיגיטלית עם 26 מדריכים מקצועיים בעברית",
+    "lang": "he",
+    "dir": "rtl",
+    "start_url": "/Resources/index.html",
+    "display": "standalone",
+    "theme_color": "#2563eb",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ]
+}

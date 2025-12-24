@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אופטימיזציה של Windows Terminal</title>
+    <style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap');
+    :root {
+        --theme-primary: #0078D4;
+        --theme-accent: #2D2D30;
+        --surface: #ffffff;
+        --text-main: #1a202c;
+        --text-muted: #718096;
+        --border-color: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; font-family: 'Heebo', sans-serif; background: #f7fafc;
+        color: var(--text-main); line-height: 1.6; direction: rtl;
+    }
+    .lms-banner { background: #10b981; color: white; padding: 0.5rem; font-size: 0.85rem; text-align: center; }
+    .lms-btn { background: white; color: #10b981; padding: 2px 10px; border-radius: 20px; text-decoration: none; font-weight: bold; margin-right: 10px; }
+    .global-header { background: white; border-bottom: 1px solid var(--border-color); padding: 1rem; }
+    .global-nav { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { font-weight: 900; text-decoration: none; color: black; font-size: 1.2rem; }
+    .nav-links { display: flex; gap: 1rem; }
+    .nav-link { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; }
+    
+    .audio-player-widget {
+        position: fixed; bottom: 20px; left: 20px; z-index: 100;
+        background: white; padding: 10px 20px; border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px;
+        border: 2px solid var(--theme-primary);
+    }
+    .audio-btn { background: var(--theme-primary); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; }
+
+    .form-section { background: #fff; border: 1px solid #edf2f7; padding: 30px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 1rem; color: #2d3748; }
+    .field input[type="text"], .field textarea {
+        width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 12px; outline: none; transition: all 0.2s; font-family: inherit;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--theme-primary); }
+    .required { color: #e53e3e; margin-right: 4px; }
+    .btn-submit { background: var(--theme-primary); color: white; border: none; padding: 18px 40px; border-radius: 50px; cursor: pointer; font-weight: 900; font-size: 1.2rem; width: 100%; transition: all 0.3s; }
+    .btn-submit:hover { background: #000; transform: translateY(-2px); }
+    .btn-submit:disabled { background: #cbd5e0; cursor: not-allowed; transform: none; }
+
+    .nav-buttons-container { display: flex; justify-content: space-between; gap: 15px; margin-top: 25px; }
+    .btn-secondary { background: #e2e8f0; color: #4a5568; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; text-decoration: none; text-align: center; flex: 1; transition: 0.2s; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+    .btn-secondary:hover { background: #cbd5e0; }
+
+    .chapter-hero-img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border: 4px solid white; }
+
+        .container { max-width: 800px; margin: 30px auto; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
+        .p-40 { padding: 40px; }
+        .hero { background: linear-gradient(135deg, #0078D4, #2D2D30); color: white; padding: 60px 20px; text-align: center; }
+        .section { display: none; } .section.active { display: block; }
+        .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+        .card { height: 120px; cursor: pointer; position: relative; perspective: 1000px; }
+        .front, .back { position: absolute; inset: 0; background: #f8fafc; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; padding: 10px; border-radius: 12px; backface-visibility: hidden; transition: 0.6s; }
+        .back { background: var(--theme-primary); color: white; transform: rotateY(180deg); text-align: center; }
+        .card.flip .front { transform: rotateY(180deg); }
+        .card.flip .back { transform: rotateY(0deg); }
+        .q-box { background: #f1f5f9; padding: 25px; border-radius: 18px; margin-bottom: 20px; }
+        .opt { display: block; padding: 12px 15px; background: white; border-radius: 10px; margin-top: 10px; cursor: pointer; border: 1px solid #e2e8f0; }
+        .btn-nav { background: #0078D4; color: white; border: none; padding: 15px 40px; border-radius: 50px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.2s; }
+        .btn-nav:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    
+    <div class="lms-banner">
+        <div class="lms-banner-content">
+            <span class="lms-text">🎓 <strong>רוצה להעמיק?</strong> בקר באתר המרכזי</span>
+            <a href="https://bdnhost.net/voice4u/processed" class="lms-btn">LearningHub</a>
+        </div>
+    </div>
+
+    <div class="audio-player-widget">
+        <button class="audio-btn" onclick="playAudio()" id="pBtn">▶</button>
+        <audio id="audio"><source id="aSrc" src="task_ch5_welcome/audio_ch5_welcome.mp3"></audio>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <div class="hero">
+            <h1 style="margin-bottom:10px">אופטימיזציה של Windows Terminal</h1>
+            <p style="opacity:0.9">המדריך המעשי לתיפעול בסיסי של טרמינל חלונות</p>
+        </div>
+
+        <div class="p-40">
+            <img src="task_ch5_welcome/media_5.png" alt="אופטימיזציה של Windows Terminal" class="chapter-hero-img" onerror="this.style.display='none'">
+
+            <div class="section active" id="s0">
+                <h2>ברוכים הבאים לפרק האופטימיזציה</h2>
+                <p>בפרק זה נלמד כיצד להוציא את המקסימום מהטרמינל שלכם בעזרת טכניקות אופטימיזציה מתקדמות.</p>
+                <div class="cards">
+    <div class="card" onclick="this.classList.toggle('flip')">
+        <div class="front">Hardware Acceleration</div>
+        <div class="back">שימוש בכוח העיבוד של כרטיס המסך לשיפור מהירות הרינדור של טקסט בטרמינל.</div>
+    </div>
+  
+    <div class="card" onclick="this.classList.toggle('flip')">
+        <div class="front">Atlas Engine</div>
+        <div class="back">מנוע הרינדור החדש של Windows Terminal המציע ביצועים משופרים.</div>
+    </div>
+  
+    <div class="card" onclick="this.classList.toggle('flip')">
+        <div class="front">settings.json</div>
+        <div class="back">קובץ ההגדרות המרכזי שבו ניתן לבצע אופטימיזציות מתקדמות ידנית.</div>
+    </div>
+  </div>
+                <div class="nav-buttons-container">
+                    <a href="lesson-4.html" class="btn-secondary">← לפרק הקודם</a>
+                    <button class="btn-nav" style="flex:2" onclick="go(1)">המשך לשלב המעשי &larr;</button>
+                </div>
+            </div>
+
+            <div class="section" id="s1">
+                <h2>הסיפור של יובל: מטרמינל איטי למכונת עבודה</h2>
+                <div style="background:#fffbeb; padding:25px; border-radius:18px; margin-bottom:30px; border:1px solid #fef3c7">יובל הוא מפתח תוכנה העובד עם עשרות חלונות טרמינל פתוחים בו זמנית. הוא שם לב שהמערכת שלו מתחילה להאט וזמן התגובה של פקודות בסיסיות עלה משמעותית. לאחר חקירה, הוא גילה שהגדרות הרינדור של הטרמינל משתמשות במעבד במקום בכרטיס הגרפי, וכי היסטוריית הפקודות שלו אינה מוגדרת ביעילות. באמצעות שינוי הגדרות ה-JSON של Windows Terminal והפעלת האצת חומרה, הוא הצליח להחזיר את המערכת לביצועי שיא.</div>
+                <div class="quiz">
+    <div class="q-box" data-qid="q0">
+        <p><strong>1. מהו היתרון המרכזי של שימוש ב-Hardware Acceleration בטרמינל?</strong></p>
+        
+            <label class="opt">
+                <input type="radio" name="q0" value="שיפור מהירות הרינדור בעזרת כרטיס המסך" onchange="recordAnswer('q0', 'שיפור מהירות הרינדור בעזרת כרטיס המסך', true)">
+                שיפור מהירות הרינדור בעזרת כרטיס המסך
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q0" value="מחיקת היסטוריית הפקודות" onchange="recordAnswer('q0', 'מחיקת היסטוריית הפקודות', false)">
+                מחיקת היסטוריית הפקודות
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q0" value="שינוי צבע הרקע בלבד" onchange="recordAnswer('q0', 'שינוי צבע הרקע בלבד', false)">
+                שינוי צבע הרקע בלבד
+            </label>
+        
+    </div>
+  
+    <div class="q-box" data-qid="q1">
+        <p><strong>2. מה עלול לגרום לעיכוב (Latency) משמעותי בהקלדה בטרמינל?</strong></p>
+        
+            <label class="opt">
+                <input type="radio" name="q1" value="האצת חומרה" onchange="recordAnswer('q1', 'האצת חומרה', false)">
+                האצת חומרה
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q1" value="שימוש ביותר מדי תוספים (Plugins) כבדים" onchange="recordAnswer('q1', 'שימוש ביותר מדי תוספים (Plugins) כבדים', true)">
+                שימוש ביותר מדי תוספים (Plugins) כבדים
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q1" value="שימוש בקיצורי מקלדת" onchange="recordAnswer('q1', 'שימוש בקיצורי מקלדת', false)">
+                שימוש בקיצורי מקלדת
+            </label>
+        
+    </div>
+  </div>
+                <div class="nav-buttons-container">
+                    <button class="btn-secondary" onclick="go(0)">← חזרה</button>
+                    <button class="btn-nav" style="flex:2" onclick="go(2)">למבחן בינת התלמיד &larr;</button>
+                </div>
+            </div>
+
+            <div class="section" id="s2">
+                <div style="text-align:center; margin-bottom:40px;">
+                    <h2 style="font-size:2.2rem; font-weight:900;">🚀 מבחן בינת התלמיד</h2>
+                    <p>נא להזין מזהה תלמיד לצורך שמירת התקדמות</p>
+                </div>
+
+                <form id="insightForm">
+                    <div class="form-section">
+                        <div class="field">
+                            <label>מזהה תלמיד <span class="required">*</span></label>
+                            <input type="text" id="student_id" required placeholder="הכנס מזהה תלמיד קיים">
+                            <small style="color:#718096; display:block; margin-top:5px">זהו השדה היחיד הנדרש לזיהוי לצורך שמירת המטלה</small>
+                        </div>
+                        <div class="field">
+                            <label>מהו הדבר המפתיע ביותר שלמדתם על האופן שבו הטרמינל מנהל משאבי מערכת?</label>
+                            <textarea id="refl" placeholder="הכנס רפלקציה קצרה (אופציונלי)..."></textarea>
+                        </div>
+                    </div>
+                    <div class="nav-buttons-container">
+                        <button type="button" class="btn-secondary" onclick="go(1)">← חזרה</button>
+                        <button type="button" class="btn-submit" style="flex:2" id="submitBtn" onclick="submitFinal()">✅ שלח מטלה וסיים</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="section" id="s3">
+                <div style="text-align:center; padding:60px 20px;">
+                    <div style="font-size:5rem; margin-bottom:20px">🎉</div>
+                    <h2 style="font-size:2.5rem; font-weight:900">הפרק הושלם בהצלחה!</h2>
+                    <p style="font-size:1.1rem; color:#4a5568">התשובות שלך נשמרו בהצלחה במערכת LearningHub.</p>
+                    
+                    <div class="nav-buttons-container" style="margin-top:60px; max-width:500px; margin-left:auto; margin-right:auto">
+                        <a href="lesson-4.html" class="btn-secondary">← לפרק הקודם</a>
+                        <a href="lesson-6.html" class="btn-secondary">לפרק הבא →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://edu-manage.org/api/functions/submitGuideForm';
+        const quizLog = {};
+        const audioPaths = [
+            "task_ch5_welcome/audio_ch5_welcome.mp3",
+            "task_ch5_case/audio_ch5_case.mp3",
+            "task_ch5_summary/audio_ch5_summary.mp3"
+        ];
+
+        window.onload = () => {
+            const sid = new URLSearchParams(window.location.search).get('base44StudentId');
+            if(sid) document.getElementById('student_id').value = sid;
+        };
+
+        function go(idx) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById('s'+idx);
+            if(target) target.classList.add('active');
+            
+            const a = document.getElementById('audio');
+            const source = document.getElementById('aSrc');
+            if(audioPaths[idx]) {
+                source.src = audioPaths[idx];
+                a.load();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function playAudio() {
+            const a = document.getElementById('audio');
+            const b = document.getElementById('pBtn');
+            if(a.paused) { a.play(); b.innerText='⏸'; } else { a.pause(); b.innerText='▶'; }
+        }
+
+        function recordAnswer(qid, text, correct) {
+            quizLog[qid] = { answer: text, isCorrect: correct };
+        }
+
+        async function submitFinal() {
+            const sid = document.getElementById('student_id').value.trim();
+            if(!sid) { alert('נא למלא מזהה תלמיד'); return; }
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = '⏳ שולח...';
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        student_id: sid,
+                        guide_name: "המדריך המעשי לתיפעול בסיסי של טרמינל חלונות",
+                        guide_chapter: "אופטימיזציה של Windows Terminal",
+                        form_data: { reflection: document.getElementById('refl').value, quiz: quizLog }
+                    })
+                });
+                const result = await res.json();
+                if(result.success || res.ok) {
+                    go(3);
+                } else { throw new Error(); }
+            } catch(e) {
+                alert('שגיאה בתקשורת עם השרת. התקדמותך עשויה שלא להישמר.');
+                btn.disabled = false;
+                btn.textContent = '✅ נסה שוב';
+            }
+        }
+    </script>
+</body>
+</html>

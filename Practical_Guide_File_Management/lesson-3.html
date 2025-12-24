@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סוגי קבצים ותאימות</title>
+    <style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap');
+    :root {
+        --theme-primary: #1A73E8;
+        --theme-accent: #E8F0FE;
+        --surface: #ffffff;
+        --text-main: #1a202c;
+        --text-muted: #718096;
+        --border-color: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; font-family: 'Heebo', sans-serif; background: #f7fafc;
+        color: var(--text-main); line-height: 1.6; direction: rtl;
+    }
+    .lms-banner { background: #10b981; color: white; padding: 0.5rem; font-size: 0.85rem; text-align: center; }
+    .lms-btn { background: white; color: #10b981; padding: 2px 10px; border-radius: 20px; text-decoration: none; font-weight: bold; margin-right: 10px; }
+    .global-header { background: white; border-bottom: 1px solid var(--border-color); padding: 1rem; }
+    .global-nav { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav-brand { font-weight: 900; text-decoration: none; color: black; font-size: 1.2rem; }
+    .nav-links { display: flex; gap: 1rem; }
+    .nav-link { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; }
+    
+    .audio-player-widget {
+        position: fixed; bottom: 20px; left: 20px; z-index: 100;
+        background: white; padding: 10px 20px; border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px;
+        border: 2px solid var(--theme-primary);
+    }
+    .audio-btn { background: var(--theme-primary); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; }
+
+    .form-section { background: #fff; border: 1px solid #edf2f7; padding: 30px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 1rem; color: #2d3748; }
+    .field input[type="text"], .field textarea {
+        width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 12px; outline: none; transition: all 0.2s; font-family: inherit;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--theme-primary); }
+    .required { color: #e53e3e; margin-right: 4px; }
+    .btn-submit { background: var(--theme-primary); color: white; border: none; padding: 18px 40px; border-radius: 50px; cursor: pointer; font-weight: 900; font-size: 1.2rem; width: 100%; transition: all 0.3s; }
+    .btn-submit:hover { background: #000; transform: translateY(-2px); }
+    .btn-submit:disabled { background: #cbd5e0; cursor: not-allowed; transform: none; }
+
+        .container { max-width: 800px; margin: 30px auto; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
+        .p-40 { padding: 40px; }
+        .hero { background: linear-gradient(135deg, #1A73E8, #E8F0FE); color: white; padding: 60px 20px; text-align: center; }
+        .section { display: none; } .section.active { display: block; }
+        .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+        .card { height: 120px; cursor: pointer; position: relative; perspective: 1000px; }
+        .front, .back { position: absolute; inset: 0; background: #f8fafc; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; padding: 10px; border-radius: 12px; backface-visibility: hidden; transition: 0.6s; }
+        .back { background: var(--theme-primary); color: white; transform: rotateY(180deg); text-align: center; }
+        .card.flip .front { transform: rotateY(180deg); }
+        .card.flip .back { transform: rotateY(0deg); }
+        .q-box { background: #f1f5f9; padding: 25px; border-radius: 18px; margin-bottom: 20px; }
+        .opt { display: block; padding: 12px 15px; background: white; border-radius: 10px; margin-top: 10px; cursor: pointer; border: 1px solid #e2e8f0; }
+        .btn-nav { background: #1A73E8; color: white; border: none; padding: 15px 40px; border-radius: 50px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 25px; }
+    </style>
+</head>
+<body>
+    
+    <div class="lms-banner">
+        <div class="lms-banner-content">
+            <span class="lms-text">🎓 <strong>רוצה להעמיק?</strong> בקר באתר המרכזי</span>
+            <a href="https://edu-manage.org/" class="lms-btn">LearningHub</a>
+        </div>
+    </div>
+
+    <div class="audio-player-widget">
+        <button class="audio-btn" onclick="playAudio()" id="pBtn">▶</button>
+        <audio id="audio"><source id="aSrc" src="Chapter_3/audio_ch3_welcome.mp3"></audio>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <div class="hero">
+            <h1>סוגי קבצים ותאימות</h1>
+            <p>המדריך המעשי לשימוש ניהול ועריכה בקבצים במחשב</p>
+        </div>
+
+        <div class="p-40">
+            <div class="section active" id="s0">
+                <h2>ברוכים הבאים לשיעור 3</h2>
+                <p>בשיעור זה נצלול לעומק עולם הפורמטים ונלמד איך לבחור את הסיומת הנכונה לכל משימה.</p>
+                <div class="cards">
+    <div class="card" onclick="this.classList.toggle('flip')">
+        <div class="front">PDF</div>
+        <div class="back">סיומת קובץ המיועדת לצפייה בלבד ושומרת על עיצוב המקור בכל מכשיר.</div>
+    </div>
+  
+    <div class="card" onclick="this.classList.toggle('flip')">
+        <div class="front">JPG/JPEG</div>
+        <div class="back">פורמט קובץ תמונה דחוס הנפוץ ביותר לשימוש באינטרנט.</div>
+    </div>
+  
+    <div class="card" onclick="this.classList.toggle('flip')">
+        <div class="front">DOCX</div>
+        <div class="back">פורמט מסמך של Microsoft Word המאפשר עריכת טקסט מתקדמת.</div>
+    </div>
+  
+    <div class="card" onclick="this.classList.toggle('flip')">
+        <div class="front">תאימות (Compatibility)</div>
+        <div class="back">היכולת של תוכנה אחת לפתוח ולהציג קבצים שנוצרו בתוכנה אחרת.</div>
+    </div>
+  </div>
+                <button class="btn-nav" onclick="go(1)">המשך לשלב המעשי &larr;</button>
+            </div>
+
+            <div class="section" id="s1">
+                <h2>מקרה בוחן: משבר הפורמטים של מיכל</h2>
+                <div style="background:#fffbeb; padding:25px; border-radius:18px; margin-bottom:30px;">מיכל היא מעצבת גרפית ששלחה קובץ בעיצוב מורכב ללקוח. הלקוח טוען שהוא לא מצליח לפתוח את הקובץ כי אין לו את התוכנה המתאימה. מיכל שלחה את הקובץ בפורמט raw של פוטושופ (PSD), בעוד הלקוח רק רצה לראות את התוצאה הסופית כדי לאשר אותה. במקביל, המנהל של מיכל ביקש את הקובץ בפורמט שמאפשר הדפסה איכותית ללא תלות בפונטים מותקנים.</div>
+                <div class="quiz">
+    <div class="q-box" data-qid="q0">
+        <p><strong>1. איזו סיומת קובץ היא האידיאלית לשליחת קורות חיים כדי להבטיח עיצוב אחיד?</strong></p>
+        
+            <label class="opt">
+                <input type="radio" name="q0" value=".exe" onchange="recordAnswer('q0', '.exe', false)">
+                .exe
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q0" value=".pdf" onchange="recordAnswer('q0', '.pdf', true)">
+                .pdf
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q0" value=".zip" onchange="recordAnswer('q0', '.zip', false)">
+                .zip
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q0" value=".mp3" onchange="recordAnswer('q0', '.mp3', false)">
+                .mp3
+            </label>
+        
+    </div>
+  
+    <div class="q-box" data-qid="q1">
+        <p><strong>2. מה המשמעות של שמירת תמונה בפורמט JPG לעומת פורמט RAW?</strong></p>
+        
+            <label class="opt">
+                <input type="radio" name="q1" value="הקובץ דחוס ומאבד מעט איכות אך תופס פחות מקום." onchange="recordAnswer('q1', 'הקובץ דחוס ומאבד מעט איכות אך תופס פחות מקום.', true)">
+                הקובץ דחוס ומאבד מעט איכות אך תופס פחות מקום.
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q1" value="הקובץ הופך לווידאו באופן אוטומטי." onchange="recordAnswer('q1', 'הקובץ הופך לווידאו באופן אוטומטי.', false)">
+                הקובץ הופך לווידאו באופן אוטומטי.
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q1" value="לא ניתן לפתוח את הקובץ בטלפונים חכמים." onchange="recordAnswer('q1', 'לא ניתן לפתוח את הקובץ בטלפונים חכמים.', false)">
+                לא ניתן לפתוח את הקובץ בטלפונים חכמים.
+            </label>
+        
+            <label class="opt">
+                <input type="radio" name="q1" value="הקובץ מוגן בסיסמה." onchange="recordAnswer('q1', 'הקובץ מוגן בסיסמה.', false)">
+                הקובץ מוגן בסיסמה.
+            </label>
+        
+    </div>
+  </div>
+                <button class="btn-nav" onclick="go(2)">למבחן בינת התלמיד &larr;</button>
+            </div>
+
+            <div class="section" id="s2">
+                <div style="text-align:center; margin-bottom:40px;">
+                    <h2 style="font-size:2.2rem; font-weight:900;">🚀 מבחן בינת התלמיד</h2>
+                    <p>נא להזין מזהה תלמיד לצורך שמירת התקדמות</p>
+                </div>
+
+                <form id="insightForm">
+                    <div class="form-section">
+                        <div class="field">
+                            <label>מזהה תלמיד <span class="required">*</span></label>
+                            <input type="text" id="student_id" required placeholder="הכנס מזהה תלמיד קיים">
+                            <small style="color:#718096;">זהו השדה היחיד הנדרש לזיהוי לצורך שמירת המטלה</small>
+                        </div>
+                        <div class="field">
+                            <label>איזה פורמט קובץ חדש למדתם היום שלא הכרתם קודם, ואיך הוא יכול לעזור לכם?</label>
+                            <textarea id="refl" placeholder="הכנס רפלקציה קצרה (אופציונלי)..."></textarea>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-submit" id="submitBtn" onclick="submitFinal()">✅ שלח מטלה וסיים</button>
+                </form>
+            </div>
+
+            <div class="section" id="s3">
+                <div style="text-align:center; padding:80px 20px;">
+                    <div style="font-size:5rem;">🎉</div>
+                    <h2>הפרק הושלם בהצלחה!</h2>
+                    <p>התשובות שלך נקלטו במערכת.</p>
+                    <div id="portalLink"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://edu-manage.org/api/functions/submitGuideForm';
+        const quizLog = {};
+        const audioPaths = [
+            "Chapter_3/audio_ch3_welcome.mp3",
+            "Chapter_3/audio_ch3_case.mp3",
+            "Chapter_3/audio_ch3_summary.mp3"
+        ];
+
+        window.onload = () => {
+            const sid = new URLSearchParams(window.location.search).get('base44StudentId');
+            if(sid) document.getElementById('student_id').value = sid;
+        };
+
+        function go(idx) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById('s'+idx).classList.add('active');
+            const a = document.getElementById('audio');
+            document.getElementById('aSrc').src = audioPaths[idx] || audioPaths[0];
+            a.load();
+            window.scrollTo(0,0);
+        }
+
+        function playAudio() {
+            const a = document.getElementById('audio');
+            const b = document.getElementById('pBtn');
+            if(a.paused) { a.play(); b.innerText='⏸'; } else { a.pause(); b.innerText='▶'; }
+        }
+
+        function recordAnswer(qid, text, correct) {
+            quizLog[qid] = { answer: text, isCorrect: correct };
+        }
+
+        async function submitFinal() {
+            const sid = document.getElementById('student_id').value.trim();
+            if(!sid) { alert('נא למלא מזהה תלמיד'); return; }
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = '⏳ שולח...';
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        student_id: sid,
+                        guide_name: "המדריך המעשי לשימוש ניהול ועריכה בקבצים במחשב",
+                        guide_chapter: "סוגי קבצים ותאימות",
+                        form_data: { reflection: document.getElementById('refl').value, quiz: quizLog }
+                    })
+                });
+                const result = await res.json();
+                if(result.success) {
+                    go(3);
+                } else { throw new Error(); }
+            } catch(e) {
+                alert('שגיאה בשליחה');
+                btn.disabled = false;
+                btn.textContent = '✅ נסה שוב';
+            }
+        }
+    </script>
+</body>
+</html>

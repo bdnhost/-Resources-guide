@@ -1,0 +1,62 @@
+[
+  {
+    "id": "lesson_1",
+    "title": "Foundations of File Systems",
+    "entity_type": "session",
+    "course_id": "המדריך המעשי לשימוש ניהול ועריכה בקבצים במחשב",
+    "script": "[excited] שלום לכולם וברוכים הבאים לפרק הראשון! [pauses] היום אנחנו הולכים להציץ מתחת למכסה המנוע של המחשב שלכם. [thoughtful] האם תהיתם פעם לאן הקבצים הולכים כשהמחשב נכבה? או מי מחליט איפה לשמור כל תמונה? [excited] בואו נתחיל!",
+    "prompt": "A highly descriptive, futuristic visualization of a digital brain representing an Operating System, surrounded by glowing translucent cubes symbolizing data blocks. Central processing units are connected via neon light pathways to various storage modules labeled SSD and RAM. Style: Clean UI, photorealistic 8k, blue and silver color palette, cinematic lighting, professional technology concept art.",
+    "filename": "audio_ch1_welcome.mp3",
+    "image_filename": "media_ch1.png",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "id": "lesson_2",
+    "title": "Efficient Folder Management",
+    "entity_type": "session",
+    "course_id": "המדריך המעשי לשימוש ניהול ועריכה בקבצים במחשב",
+    "script": "[excited] שלום לכולם וברוכים הבאים לפרק השני! [pauses] היום אנחנו הופכים את המחשב שלכם ממחסן מבולגן למכונה משומנת. [whispers] אני אגלה לכם שרוב האנשים מבזבזים שעה ביום רק על חיפוש קבצים. [excited] אנחנו הולכים לשנות את זה עכשיו!",
+    "prompt": "A futuristic holographic file explorer interface, glowing blue translucent windows floating in a clean minimal workspace, 3D folder icons organized in a logical network, hyper-realistic, 8k resolution, cinematic lighting, photorealistic textures.",
+    "filename": "audio_ch2_welcome.mp3",
+    "image_filename": "media_ch2.png",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "id": "lesson_3",
+    "title": "File Formats and Extensions",
+    "entity_type": "session",
+    "course_id": "המדריך המעשי לשימוש ניהול ועריכה בקבצים במחשב",
+    "script": "[excited] ברוכים הבאים לשיעור השלישי! [thoughtful] האם אי פעם תהיתם למה חלק מהקבצים נפתחים בקלות ואחרים פשוט... מסרבים? ... [whispers] היום נגלה את הסוד הגדול של עולם המחשבים: הסיומות והתאימות. הכינו את העכברים, אנחנו מתחילים!",
+    "prompt": "A futuristic digital workspace interface showing various glowing file icons like PDF, DOCX, and JPG floating in a 3D holographic environment. Clean UI, photorealistic lighting, soft blue and silver tones, high resolution, 8k.",
+    "filename": "audio_ch3_welcome.mp3",
+    "image_filename": "media_ch3.png",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "id": "lesson_4",
+    "title": "Editing and Modification",
+    "entity_type": "session",
+    "course_id": "המדריך המעשי לשימוש ניהול ועריכה בקבצים במחשב",
+    "script": "[excited] ברוכים הבאים לפרק ארבע! היום אנחנו הולכים ללמוד איך 'לפצח' קבצים ולערוך אותם כמו מקצוענים. [pauses] תחשבו על זה כעל ניתוח פלסטי לקבצים שלכם... [thoughtful] אנחנו נלמד לשנות, להמיר ולייעל כל פיסת תוכן.",
+    "prompt": "A futuristic digital workstation with glowing holographic file icons being transformed in mid-air, translucent data streams connecting a PDF icon to a Word document icon, clean minimalist interface, high-tech aesthetics, soft blue and neon purple lighting, photorealistic, 8k resolution.",
+    "filename": "audio_ch4_welcome.mp3",
+    "image_filename": "media_ch4.png",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "id": "lesson_5",
+    "title": "Security and Cloud Integration",
+    "entity_type": "session",
+    "course_id": "המדריך המעשי לשימוש ניהול ועריכה בקבצים במחשב",
+    "script": "[excited] ברוכים הבאים לפרק 5! [thoughtful] היום נלמד איך ליצור סביבת עבודה בטוחה שתאפשר לכם לישון בשקט בלילה. ... נדבר על סנכרון חכם והגנה מפני איומים.",
+    "prompt": "Futuristic clean workspace, a sleek laptop showing a glowing blue shield protection icon over floating translucent file folders, cloud symbols connecting digital devices in the background, cinematic soft lighting, 8k resolution, photorealistic 3D render, minimalist UI aesthetic.",
+    "filename": "audio_ch5_welcome.mp3",
+    "image_filename": "media_ch5.png",
+    "width": 1024,
+    "height": 1024
+  }
+]
